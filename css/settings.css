@@ -1,0 +1,582 @@
+/* ═══════════════════════════════════════════════
+   Settings Modal — Full CSS
+   ═══════════════════════════════════════════════ */
+
+/* ── Settings button in header ─────────────────── */
+.btn-settings {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--border);
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.btn-settings:hover {
+    background: var(--border2);
+    color: var(--text);
+}
+
+/* ── Settings modal layout ─────────────────────── */
+.settings-modal {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    padding: 0;
+    width: min(520px, 96vw);
+    max-height: 88vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: fadeUp 0.2s ease;
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.settings-header-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.settings-close {
+    background: var(--border);
+    border: none;
+    border-radius: 8px;
+    color: var(--muted);
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Tabs ──────────────────────────────────────── */
+.settings-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 10px 10px 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow-x: auto;
+}
+
+.settings-tab {
+    padding: 8px 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--dim);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--font-body);
+    transition: all 0.15s;
+}
+
+.settings-tab.active {
+    border-bottom-color: var(--green);
+    color: var(--text);
+    font-weight: 700;
+}
+
+.settings-tab:hover:not(.active) {
+    color: var(--muted);
+}
+
+/* ── Content area ──────────────────────────────── */
+.settings-body {
+    padding: 20px 22px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.settings-panel {
+    display: none;
+}
+
+.settings-panel.active {
+    display: block;
+}
+
+/* ── Section ───────────────────────────────────── */
+.settings-section {
+    margin-bottom: 24px;
+}
+
+.settings-section-title {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* ── Setting row ───────────────────────────────── */
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 6px;
+    gap: 12px;
+}
+
+.setting-row-left {
+    flex: 1;
+}
+
+.setting-label {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.setting-desc {
+    font-size: 11px;
+    color: var(--dim);
+}
+
+/* ── Toggle switch ─────────────────────────────── */
+.toggle-wrap {
+    position: relative;
+    width: 42px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.toggle-wrap input {
+    display: none;
+}
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border2);
+    border-radius: 22px;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+
+.toggle-slider::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    background: var(--muted);
+    border-radius: 50%;
+    transition: transform 0.25s, background 0.25s;
+}
+
+.toggle-wrap input:checked+.toggle-slider {
+    background: var(--green);
+}
+
+.toggle-wrap input:checked+.toggle-slider::after {
+    transform: translateX(20px);
+    background: #0d1117;
+}
+
+/* ── Theme cards ───────────────────────────────── */
+.theme-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.theme-card {
+    border-radius: 10px;
+    padding: 14px;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.theme-card.selected {
+    border-color: var(--green);
+}
+
+.theme-card:hover {
+    border-color: var(--border2);
+}
+
+.theme-preview {
+    height: 44px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    overflow: hidden;
+}
+
+.theme-preview-bar {
+    width: 8px;
+    border-radius: 2px;
+    height: 100%;
+}
+
+.theme-preview-content {
+    flex: 1;
+    border-radius: 4px;
+}
+
+.theme-card-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.theme-card-check {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #0d1117;
+    font-size: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-card.selected .theme-card-check {
+    display: flex;
+}
+
+/* ── Font size options ─────────────────────────── */
+.font-size-options {
+    display: flex;
+    gap: 8px;
+}
+
+.font-size-btn {
+    flex: 1;
+    padding: 10px 6px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    font-family: var(--font-body);
+}
+
+.font-size-btn.selected {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(0, 255, 136, 0.08);
+}
+
+.font-size-btn .fz-preview {
+    display: block;
+    font-weight: 700;
+    color: inherit;
+    margin-bottom: 3px;
+}
+
+.font-size-btn .fz-label {
+    font-size: 10px;
+    color: var(--dim);
+}
+
+/* ── Accent colors ─────────────────────────────── */
+.accent-colors {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.accent-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+}
+
+.accent-btn.selected {
+    border-color: #fff;
+    transform: scale(1.15);
+}
+
+.accent-btn.selected::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #0d1117;
+    font-weight: 700;
+}
+
+/* ── Language options ──────────────────────────── */
+.lang-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.lang-btn {
+    padding: 12px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    font-family: var(--font-body);
+}
+
+.lang-btn.selected {
+    border-color: var(--green);
+    background: rgba(0, 255, 136, 0.06);
+}
+
+.lang-flag {
+    font-size: 26px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.lang-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.lang-sub {
+    font-size: 10px;
+    color: var(--dim);
+}
+
+/* ── Notification rows ─────────────────────────── */
+.notif-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.notif-status.granted {
+    background: rgba(0, 255, 136, 0.08);
+    color: var(--green);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.notif-status.denied {
+    background: rgba(255, 68, 68, 0.08);
+    color: var(--red);
+    border: 1px solid rgba(255, 68, 68, 0.2);
+}
+
+.notif-status.default {
+    background: var(--bg);
+    color: var(--muted);
+    border: 1px solid var(--border);
+}
+
+.btn-enable-notif {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--green), #00cc6a);
+    border: none;
+    border-radius: 8px;
+    color: #0d1117;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 14px;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+/* ── Account section ───────────────────────────── */
+.account-info-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 14px;
+}
+
+.account-avatar-big {
+    font-size: 42px;
+}
+
+.account-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.account-email {
+    font-size: 12px;
+    color: var(--dim);
+    margin-top: 2px;
+}
+
+.account-level {
+    font-size: 11px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.btn-logout-full {
+    width: 100%;
+    padding: 11px;
+    background: #2a0a0a;
+    border: 1px solid rgba(255, 68, 68, 0.4);
+    border-radius: 10px;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-logout-full:hover {
+    background: #3a0a0a;
+}
+
+.danger-zone {
+    margin-top: 16px;
+    padding: 14px;
+    background: rgba(255, 68, 68, 0.05);
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    border-radius: 10px;
+}
+
+.danger-zone-title {
+    font-size: 11px;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* ── Save button ───────────────────────────────── */
+.settings-footer {
+    padding: 14px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.btn-settings-save {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--green), #00cc6a);
+    border: none;
+    border-radius: 8px;
+    color: #0d1117;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+.btn-settings-reset {
+    padding: 10px 16px;
+    background: var(--border);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+
+/* ── Light theme overrides ─────────────────────── */
+body.theme-light {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --border: #e1e4e8;
+    --border2: #d0d7de;
+    --text: #1a1a2e;
+    --muted: #57606a;
+    --dim: #8b949e;
+}
+
+body.theme-light .header {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
+}
+
+body.theme-light .logo-text {
+    filter: brightness(0.85);
+}
+
+body.theme-light .task-card:hover {
+    background: #f0f2f5;
+}
+
+body.theme-light input,
+body.theme-light select,
+body.theme-light textarea {
+    color: #1a1a2e;
+}
+
+body.theme-light select option {
+    background: #fff;
+    color: #1a1a2e;
+}
+
+/* ── Font sizes ────────────────────────────────── */
+body.fs-small {
+    font-size: 12px;
+}
+
+body.fs-medium {
+    font-size: 14px;
+}
+
+body.fs-large {
+    font-size: 16px;
+}
+
+body.fs-xlarge {
+    font-size: 18px;
+}

@@ -35,14 +35,12 @@ window.addEventListener("DOMContentLoaded", async () => {
     STATE.xp = profile?.xp || 0;
 
   } catch (e) {
-    console.error("DB Load Error:", e);
     document.getElementById("main-content").innerHTML = `
       <div style="text-align:center;padding:60px 20px;color:#ff4444">
         <div style="font-size:40px;margin-bottom:14px">❌</div>
-        <div style="font-size:16px;margin-bottom:8px">Could not load data</div>
-        <div style="font-size:12px;color:#8b949e;max-width:400px;margin:0 auto">${e.message || e}</div>
-        <div style="font-size:12px;color:#484f58;margin-top:8px">Make sure you've run the schema.sql in Supabase SQL Editor</div>
-        <button onclick="location.reload()" style="margin-top:16px;padding:8px 20px;background:#00ff88;color:#0d1117;border:none;border-radius:8px;cursor:pointer;font-weight:600">↻ Retry</button>
+        <div style="font-size:16px;margin-bottom:8px">Could not connect to database</div>
+        <div style="font-size:12px;color:#484f58">${e.message}</div>
+        <div style="font-size:12px;color:#484f58;margin-top:8px">Check your Supabase keys in js/config.js</div>
       </div>`;
     return;
   }
@@ -109,6 +107,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   populateTaskModalCats();
 
   // Boot UI
+  // Load saved settings (theme, font, language, etc.)
+  loadSettings();
+
   updateHeader();
   updateSidebar();
   initPomodoro();

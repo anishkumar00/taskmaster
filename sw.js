@@ -2,7 +2,7 @@
 //  Service Worker — PWA Offline Support
 // ═══════════════════════════════════════════════════════
 
-const CACHE_NAME = "taskmaster-v2";
+const CACHE_NAME = "taskmaster-v3";
 
 // Files to cache for offline use
 const STATIC_FILES = [
@@ -12,6 +12,7 @@ const STATIC_FILES = [
     "/css/style.css",
     "/css/auth.css",
     "/css/dashboard.css",
+    "/css/settings.css",
     "/js/config.js",
     "/js/supabase-client.js",
     "/js/utils.js",
@@ -24,6 +25,7 @@ const STATIC_FILES = [
     "/js/stats.js",
     "/js/categories.js",
     "/js/profile.js",
+    "/js/settings.js",
     "/js/auth.js",
     "/js/app.js",
     "/manifest.json",
