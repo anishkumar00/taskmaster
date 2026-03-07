@@ -2,7 +2,7 @@
 //  Service Worker — PWA Offline Support
 // ═══════════════════════════════════════════════════════
 
-const CACHE_NAME = "taskmaster-v1";
+const CACHE_NAME = "taskmaster-v2";
 
 // Files to cache for offline use
 const STATIC_FILES = [
