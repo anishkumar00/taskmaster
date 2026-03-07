@@ -2,9 +2,6 @@
 Thumbs.db
 .DS_Store
 
-# Secret config (has Supabase keys)
-js/config.js
-
 # Editor folders
 .vscode/
 .idea/
