@@ -13,6 +13,8 @@ const STATE = {
     view: "today",
     filterCat: "all",
     quoteIdx: 0,
+    habits: [],
+    habitLogs: [],
     // Editing
     editingTaskId: null,
     // Study

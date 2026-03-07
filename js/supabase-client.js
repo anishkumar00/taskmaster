@@ -133,3 +133,51 @@ async function dbGainXp(userId, current, amount) {
     await dbUpdateProfile(userId, { xp: newXp });
     return newXp;
 }
+
+// ── Habits ────────────────────────────────────────────────
+async function dbGetHabits(userId) {
+    const { data, error } = await db.from("habits").select("*").eq("user_id", userId).order("created_at");
+    if (error) throw error;
+    return data || [];
+}
+
+async function dbAddHabit(userId, habit) {
+    const { data, error } = await db.from("habits").insert({ ...habit, user_id: userId }).select().single();
+    if (error) throw error;
+    return data;
+}
+
+async function dbDeleteHabit(habitId) {
+    const { error } = await db.from("habits").delete().eq("id", habitId);
+    if (error) throw error;
+}
+
+// ── Habit Logs ───────────────────────────────────────────
+async function dbGetHabitLogs(userId, yearMonth) {
+    // yearMonth should be "YYYY-MM" to fetch logs for a specific month
+    const startObj = new Date(`${yearMonth}-01T00:00:00Z`);
+    const endObj = new Date(startObj.getFullYear(), startObj.getMonth() + 1, 0, 23, 59, 59); // last day of month
+
+    const startStr = startObj.toISOString().split('T')[0];
+    const endStr = endObj.toISOString().split('T')[0];
+
+    const { data, error } = await db.from("habit_logs")
+        .select("*")
+        .eq("user_id", userId)
+        .gte("log_date", startStr)
+        .lte("log_date", endStr);
+
+    if (error) throw error;
+    return data || [];
+}
+
+async function dbToggleHabitLog(userId, habitId, logDate, status) {
+    // Uses upsert so we either create a new log or update existing
+    const { data, error } = await db.from("habit_logs").upsert(
+        { habit_id: habitId, user_id: userId, log_date: logDate, status: status },
+        { onConflict: 'habit_id, log_date' }
+    ).select().single();
+
+    if (error) throw error;
+    return data;
+}

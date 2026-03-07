@@ -76,12 +76,12 @@ function setView(v) {
     // Show / hide view panels
     const isTaskView = ["today", "pending", "completed"].includes(v);
     document.getElementById("view-tasks").classList.toggle("hidden", !isTaskView);
-    document.getElementById("view-history").classList.toggle("hidden", v !== "history");
     document.getElementById("view-stats").classList.toggle("hidden", v !== "stats");
+    document.getElementById("view-habits").classList.toggle("hidden", v !== "habits");
 
     if (isTaskView) renderTasks();
-    else if (v === "history") renderHistory();
     else if (v === "stats") renderStats();
+    else if (v === "habits") renderHabitsView();
 }
 
 // ── XP helper ─────────────────────────────────────────

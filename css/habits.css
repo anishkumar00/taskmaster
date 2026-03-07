@@ -1,0 +1,416 @@
+/* ═══════════════════════════════════════════════════════
+   Habit Tracker Styles
+   Matches the detailed dashboard reference image
+═══════════════════════════════════════════════════════ */
+
+.habits-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    animation: fadeUp 0.3s ease;
+}
+
+/* ── Top Layout (Summary, Rings, Charts) ──────── */
+.habits-top-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    gap: 16px;
+}
+
+.habits-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Summary Card (Left) ──────── */
+.habits-summary-card {
+    text-align: center;
+}
+
+.habits-month-title {
+    font-size: 24px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.habits-subtitle {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+
+.habits-stats-list {
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.habits-stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.habits-big-stat-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.hbs-label {
+    font-size: 10px;
+    color: var(--dim);
+    margin-bottom: 4px;
+}
+
+.hbs-val {
+    font-size: 20px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+/* ── Middle Panel (Progress & Chart) ──────── */
+.habits-middle-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.habits-rings-row {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.progress-ring-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.progress-ring-box svg {
+    transform: rotate(-90deg);
+}
+
+.pr-label {
+    font-size: 9px;
+    color: var(--dim);
+    margin-top: 8px;
+    text-align: center;
+    max-width: 70px;
+}
+
+.pr-pct {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.habits-chart-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.habits-chart-title {
+    font-size: 10px;
+    color: var(--dim);
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.habits-chart-area {
+    flex: 1;
+    position: relative;
+    padding: 10px 0;
+}
+
+/* ── Right Panel (Top Habits & Streaks) ──────── */
+.habits-right-panel {
+    gap: 20px;
+}
+
+.hrp-section {
+    flex: 1;
+}
+
+.hrp-title {
+    font-size: 10px;
+    color: var(--dim);
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.hrp-bar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar-label {
+    width: 90px;
+    font-size: 10px;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bar-track {
+    flex: 1;
+    height: 14px;
+    background: var(--bg);
+    border-radius: 4px;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    min-width: 20px;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
+}
+
+.bar-val {
+    font-size: 9px;
+    color: var(--bg);
+    font-weight: 700;
+}
+
+/* ── Bottom Grid Area ──────── */
+.habits-grid-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.grid-header-row {
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 12px;
+}
+
+.gh-title-col {
+    width: 180px;
+    font-size: 10px;
+    color: var(--dim);
+    text-align: left;
+}
+
+.gh-goal-col {
+    width: 50px;
+    font-size: 10px;
+    color: var(--dim);
+    text-align: center;
+}
+
+.gh-prog-col {
+    width: 120px;
+    font-size: 10px;
+    color: var(--dim);
+    text-align: center;
+}
+
+.gh-streak-col {
+    width: 60px;
+    font-size: 10px;
+    color: var(--dim);
+    text-align: center;
+}
+
+.gh-days-col {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.gh-day-num {
+    width: 14px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--dim);
+}
+
+.grid-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+/* ── Grid Row ──────── */
+.habit-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-bottom: 1px dashed var(--border);
+    transition: background 0.15s;
+}
+
+.habit-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.hr-title {
+    width: 180px;
+    font-size: 11px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hr-del-btn {
+    cursor: pointer;
+    color: var(--dim);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.hr-del-btn:hover {
+    color: var(--red);
+}
+
+.hr-goal {
+    width: 50px;
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.hr-days-grid {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.gh-day-cell {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.habit-checkbox {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--bg);
+    transition: all 0.15s;
+}
+
+/* Week alternating column colors */
+.habit-checkbox.chk-w1 {
+    background: var(--cyan);
+    border-color: var(--cyan);
+}
+
+.habit-checkbox.chk-w2 {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.habit-checkbox.chk-w3 {
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+.habit-checkbox.chk-w4 {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: #000;
+}
+
+.habit-checkbox.chk-w5 {
+    background: var(--pink);
+    border-color: var(--pink);
+}
+
+.hr-prog {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--muted);
+}
+
+.hr-prog-text {
+    width: 30px;
+    text-align: right;
+}
+
+.hr-prog-pct {
+    width: 25px;
+}
+
+.hr-prog-bar-track {
+    flex: 1;
+    height: 6px;
+    background: var(--bg);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.hr-prog-bar-fill {
+    height: 100%;
+}
+
+.hr-streak {
+    width: 60px;
+    text-align: center;
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text);
+}
+
+.habits-footer-actions {
+    display: flex;
+    justify-content: space-between;
+}

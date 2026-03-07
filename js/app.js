@@ -21,17 +21,18 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Load all data in parallel
-    const [profile, tasks, cats, sessions] = await Promise.all([
+    const [profile, tasks, cats, sessions, _habits] = await Promise.all([
       dbGetProfile(session.user.id),
       dbGetTasks(session.user.id),
       dbGetCategories(session.user.id),
       dbGetSessions(session.user.id),
+      loadHabitsData() // Modifies STATE internally
     ]);
 
-    STATE.profile = profile;
-    STATE.tasks = tasks;
-    STATE.cats = cats;
-    STATE.sessions = sessions;
+    STATE.profile = profile || {};
+    STATE.tasks = tasks || [];
+    STATE.cats = cats || [];
+    STATE.sessions = sessions || [];
     STATE.xp = profile?.xp || 0;
 
   } catch (e) {
@@ -101,7 +102,8 @@ window.addEventListener("DOMContentLoaded", async () => {
       <div id="task-list"></div>
     </div>
     <div id="view-history" class="view hidden"></div>
-    <div id="view-stats"   class="view hidden"></div>`;
+    <div id="view-stats"   class="view hidden"></div>
+    <div id="view-habits"  class="view hidden" style="height:100%"></div>`;
 
   // Populate task modal category dropdown
   populateTaskModalCats();

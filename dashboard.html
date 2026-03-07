@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/dashboard.css" />
     <link rel="stylesheet" href="css/settings.css" />
+    <link rel="stylesheet" href="css/habits.css" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#00ff88" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +60,8 @@
                         class="nav-label">All Tasks</span> <span class="nav-badge" id="badge-pending"></span></button>
                 <button class="nav-btn" data-view="completed" onclick="setView('completed')"><span>✅</span><span
                         class="nav-label">Completed</span> <span class="nav-badge" id="badge-completed"></span></button>
-                <button class="nav-btn" data-view="history" onclick="setView('history')"> <span>📅</span><span
-                        class="nav-label">Study History</span></button>
+                <button class="nav-btn" data-view="habits" onclick="setView('habits')"> <span>🔄</span><span
+                        class="nav-label" id="lbl-habits">Habit Tracker</span></button>
                 <button class="nav-btn" data-view="stats" onclick="setView('stats')"> <span>📊</span><span
                         class="nav-label">Stats</span></button>
             </nav>
@@ -184,13 +185,13 @@
 
                 <!-- Task list -->
                 <div id="task-list"></div>
-            </div>
-
-            <!-- HISTORY VIEW -->
-            <div id="view-history" class="view hidden"></div>
+            </div> <!-- END VIEW-TASKS -->
 
             <!-- STATS VIEW -->
             <div id="view-stats" class="view hidden"></div>
+
+            <!-- HABITS VIEW -->
+            <div id="view-habits" class="view hidden" style="height:100%"></div>
 
         </main>
     </div>
@@ -288,11 +289,11 @@
     <script src="js/tasks.js"></script>
     <script src="js/timer.js"></script>
     <script src="js/study.js"></script>
-    <script src="js/history.js"></script>
     <script src="js/stats.js"></script>
     <script src="js/categories.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/settings.js"></script>
+    <script src="js/habits.js"></script>
     <script src="js/app.js"></script>
 </body>
 
