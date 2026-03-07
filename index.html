@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>TaskMaster Pro — Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00ff88" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- BG Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <div class="auth-wrapper">
+        <!-- Logo -->
+        <div class="logo-block">
+            <div class="logo-text">⚡ TaskMaster</div>
+            <div class="logo-sub">YOUR PERSONAL PRODUCTIVITY SYSTEM</div>
+        </div>
+
+        <div class="auth-card">
+            <!-- Tab toggle -->
+            <div class="tab-row">
+                <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">🔑 Login</button>
+                <button class="tab-btn" id="tab-signup" onclick="switchTab('signup')">✨ Sign Up</button>
+            </div>
+
+            <!-- Signup steps (hidden in login mode) -->
+            <div class="step-row hidden" id="step-row">
+                <button class="step-btn active" id="step-0" onclick="switchStep(0)">📝 Info</button>
+                <button class="step-btn" id="step-1" onclick="switchStep(1)">🎭 Avatar</button>
+            </div>
+
+            <!-- INFO PANEL -->
+            <div id="panel-info">
+                <div id="name-group" class="hidden">
+                    <label class="lbl">Your Name</label>
+                    <input id="inp-name" class="inp" type="text" placeholder="e.g. Rahul" />
+                </div>
+                <label class="lbl">Email Address</label>
+                <input id="inp-email" class="inp" type="email" placeholder="you@email.com" />
+                <label class="lbl">
+                    Password
+                    <span class="lbl-sub" id="pw-hint"> (min 6 chars)</span>
+                </label>
+                <div class="pw-wrap">
+                    <input id="inp-pass" class="inp" type="password" placeholder="••••••••"
+                        style="margin-bottom:0;padding-right:44px" />
+                    <button class="pw-eye" onclick="togglePw()" id="pw-eye">👁</button>
+                </div>
+            </div>
+
+            <!-- AVATAR PANEL (signup only) -->
+            <div id="panel-avatar" class="hidden">
+                <label class="lbl">Choose your avatar:</label>
+                <div class="avatar-grid" id="avatar-grid"></div>
+                <div class="avatar-preview">
+                    <span id="avatar-preview-icon">🧑‍💻</span>
+                    <div class="avatar-preview-label">Selected avatar</div>
+                </div>
+            </div>
+
+            <!-- Error -->
+            <div id="auth-error" class="error-box hidden"></div>
+
+            <!-- Submit -->
+            <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
+                🔑 Login to TaskMaster
+            </button>
+
+            <div class="auth-switch">
+                <span id="switch-text">No account?</span>
+                <span class="switch-link" onclick="switchMode()">Sign up free</span>
+            </div>
+        </div>
+
+        <div class="auth-footer">🔒 Secured by Supabase — your data is private and encrypted</div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

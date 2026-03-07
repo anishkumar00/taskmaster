@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>TaskMaster Pro</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00ff88" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- ═══ HEADER ═══ -->
+    <header class="header">
+        <div class="logo-text">⚡ TaskMaster</div>
+
+        <div class="xp-bar-wrap">
+            <div class="xp-bar-labels">
+                <span id="hdr-level" class="xp-level">Lv.1 Newbie</span>
+                <span id="hdr-xp" class="xp-num">0 XP</span>
+            </div>
+            <div class="xp-bar-track">
+                <div class="xp-bar-fill" id="hdr-xp-fill"></div>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <span id="hdr-streak" class="hdr-stat">🔥0d</span>
+            <span id="hdr-study" class="hdr-stat cyan hidden"></span>
+            <button class="btn-study" onclick="startStudyMode()">📚 Study</button>
+            <button class="btn-add" onclick="openTaskModal()">+ Task</button>
+            <button class="btn-avatar" id="hdr-avatar" onclick="openProfileModal()">🧑‍💻</button>
+        </div>
+    </header>
+
+    <div class="layout">
+        <!-- ═══ SIDEBAR ═══ -->
+        <aside class="sidebar">
+            <!-- Nav -->
+            <nav class="nav-list" id="nav-list">
+                <button class="nav-btn active" data-view="today" onclick="setView('today')"> <span>☀️</span><span
+                        class="nav-label">Today</span> <span class="nav-badge" id="badge-today"></span></button>
+                <button class="nav-btn" data-view="pending" onclick="setView('pending')"> <span>📋</span><span
+                        class="nav-label">All Tasks</span> <span class="nav-badge" id="badge-pending"></span></button>
+                <button class="nav-btn" data-view="completed" onclick="setView('completed')"><span>✅</span><span
+                        class="nav-label">Completed</span> <span class="nav-badge" id="badge-completed"></span></button>
+                <button class="nav-btn" data-view="history" onclick="setView('history')"> <span>📅</span><span
+                        class="nav-label">Study History</span></button>
+                <button class="nav-btn" data-view="stats" onclick="setView('stats')"> <span>📊</span><span
+                        class="nav-label">Stats</span></button>
+            </nav>
+
+            <!-- Categories -->
+            <div class="sidebar-section-header">
+                <span class="sidebar-section-title">CATEGORIES</span>
+                <button class="cat-settings-btn" onclick="openCatModal()">⚙</button>
+            </div>
+            <div class="cat-list" id="cat-list"></div>
+
+            <!-- Pomodoro -->
+            <div class="pom-widget">
+                <div class="pom-header">
+                    <span class="pom-title">⏱ POMODORO</span>
+                    <button class="pom-edit-btn" id="pom-edit-btn" onclick="togglePomEdit()">edit</button>
+                </div>
+                <!-- Edit mode -->
+                <div id="pom-edit-panel" class="hidden">
+                    <div class="pom-edit-row">
+                        <span class="pom-edit-label">Focus:</span>
+                        <input type="number" id="pom-focus-inp" class="pom-inp" min="1" max="120" value="25"
+                            oninput="updatePomSettings()" />
+                        <span class="pom-edit-unit">min</span>
+                    </div>
+                    <div class="pom-edit-row">
+                        <span class="pom-edit-label">Break:</span>
+                        <input type="number" id="pom-break-inp" class="pom-inp" min="1" max="60" value="5"
+                            oninput="updatePomSettings()" />
+                        <span class="pom-edit-unit">min</span>
+                    </div>
+                </div>
+                <!-- Display mode -->
+                <div id="pom-display">
+                    <div class="pom-time" id="pom-time">25:00</div>
+                    <div class="pom-mode" id="pom-mode-label">FOCUS 25min (+50 XP)</div>
+                </div>
+                <div class="pom-progress-track">
+                    <div class="pom-progress-fill" id="pom-progress"></div>
+                </div>
+                <div class="pom-btns">
+                    <button class="btn-pom-start" id="pom-start-btn" onclick="togglePomodoro()">▶ Start</button>
+                    <button class="btn-pom-reset" onclick="resetPomodoro()">↺</button>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="quote-widget" onclick="nextQuote()">
+                <div class="quote-label">💬 tap for motivation</div>
+                <div class="quote-text" id="quote-text"></div>
+            </div>
+        </aside>
+
+        <!-- ═══ MAIN ═══ -->
+        <main class="main" id="main-content">
+
+            <!-- TASK VIEWS (today/pending/completed) -->
+            <div id="view-tasks" class="view">
+                <!-- Filters -->
+                <div class="filters-row">
+                    <div class="search-wrap">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-inp" class="search-inp" placeholder="Search tasks, tags..."
+                            oninput="renderTasks()" />
+                    </div>
+                    <select class="sel" id="filter-pri" onchange="renderTasks()">
+                        <option value="all">All Priority</option>
+                        <option value="high">🔴 High</option>
+                        <option value="medium">🟡 Medium</option>
+                        <option value="low">🟢 Low</option>
+                    </select>
+                    <select class="sel" id="sort-by" onchange="renderTasks()">
+                        <option value="date">📅 Date</option>
+                        <option value="priority">🔴 Priority</option>
+                        <option value="name">🔤 Name</option>
+                    </select>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="stat-cards" id="stat-cards">
+                    <div class="stat-card" onclick="openStatModal('today')">
+                        <div class="stat-card-top"><span class="stat-icon">☀️</span><span
+                                class="stat-view-badge">VIEW</span></div>
+                        <div class="stat-val" id="sc-today">0/0</div>
+                        <div class="stat-lbl">Today</div>
+                        <div class="stat-sub" id="sc-today-sub">0 remaining</div>
+                    </div>
+                    <div class="stat-card" onclick="openStatModal('completed')">
+                        <div class="stat-card-top"><span class="stat-icon">✅</span><span
+                                class="stat-view-badge">VIEW</span></div>
+                        <div class="stat-val cyan" id="sc-pct">0%</div>
+                        <div class="stat-lbl">Complete</div>
+                        <div class="stat-sub" id="sc-pct-sub">0 of 0</div>
+                    </div>
+                    <div class="stat-card" onclick="openStatModal('overdue')">
+                        <div class="stat-card-top"><span class="stat-icon">⚠️</span><span
+                                class="stat-view-badge">VIEW</span></div>
+                        <div class="stat-val" id="sc-overdue" style="color:#ff4444">0</div>
+                        <div class="stat-lbl">Overdue</div>
+                        <div class="stat-sub" id="sc-overdue-sub">All clear ✓</div>
+                    </div>
+                    <div class="stat-card" onclick="openStatModal('streak')">
+                        <div class="stat-card-top"><span class="stat-icon">🔥</span><span
+                                class="stat-view-badge">VIEW</span></div>
+                        <div class="stat-val orange" id="sc-streak">0d</div>
+                        <div class="stat-lbl">Streak</div>
+                        <div class="stat-sub" id="sc-streak-sub">Start today</div>
+                    </div>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="progress-section">
+                    <div class="progress-labels">
+                        <span>Overall Progress</span>
+                        <span class="green" id="prog-pct">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="prog-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Task list -->
+                <div id="task-list"></div>
+            </div>
+
+            <!-- HISTORY VIEW -->
+            <div id="view-history" class="view hidden"></div>
+
+            <!-- STATS VIEW -->
+            <div id="view-stats" class="view hidden"></div>
+
+        </main>
+    </div>
+
+    <!-- ═══ MODALS ═══ -->
+
+    <!-- Task Modal -->
+    <div class="overlay hidden" id="task-modal-overlay" onclick="closeTaskModal()">
+        <div class="modal" onclick="event.stopPropagation()" id="task-modal">
+            <div class="modal-title" id="task-modal-title">➕ New Task</div>
+            <label class="lbl">Task Title *</label>
+            <input id="tm-title" class="inp" placeholder="What do you need to do?" type="text" />
+            <div class="two-col">
+                <div>
+                    <label class="lbl">Category</label>
+                    <select id="tm-cat" class="inp"></select>
+                </div>
+                <div>
+                    <label class="lbl">Priority</label>
+                    <select id="tm-pri" class="inp">
+                        <option value="high">🔴 High</option>
+                        <option value="medium" selected>🟡 Medium</option>
+                        <option value="low">🟢 Low</option>
+                    </select>
+                </div>
+            </div>
+            <label class="lbl">Due Date</label>
+            <input id="tm-date" class="inp" type="date" />
+            <label class="lbl">Notes</label>
+            <textarea id="tm-notes" class="inp" rows="2" placeholder="Add notes..."></textarea>
+            <label class="lbl">Tags (comma separated)</label>
+            <input id="tm-tags" class="inp" placeholder="e.g. exam, revision" />
+            <label class="lbl">Subtasks</label>
+            <div class="subtask-add-row">
+                <input id="tm-sub-inp" class="inp" style="margin-bottom:0;flex:1" placeholder="Add subtask..." />
+                <button class="btn-add-sub" onclick="addSubtask()">+</button>
+            </div>
+            <div id="tm-subtasks"></div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeTaskModal()">Cancel</button>
+                <button class="btn-save" id="task-save-btn" onclick="saveTask()">Add Task ✓</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div class="overlay hidden" id="detail-overlay" onclick="closeDetail()">
+        <div class="modal" onclick="event.stopPropagation()" id="detail-modal"></div>
+    </div>
+
+    <!-- Category Modal -->
+    <div class="overlay hidden" id="cat-overlay" onclick="closeCatModal()">
+        <div class="modal" onclick="event.stopPropagation()" id="cat-modal"></div>
+    </div>
+
+    <!-- Stat Modal -->
+    <div class="overlay hidden" id="stat-overlay" onclick="closeStatModal()">
+        <div class="modal modal-wide" onclick="event.stopPropagation()" id="stat-modal"></div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="overlay hidden" id="profile-overlay" onclick="closeProfileModal()">
+        <div class="modal" onclick="event.stopPropagation()" id="profile-modal"></div>
+    </div>
+
+    <!-- Study Mode Modal -->
+    <div class="overlay study-overlay hidden" id="study-overlay">
+        <div class="study-modal" id="study-modal">
+            <div class="study-title">📚 Study Mode</div>
+            <div class="study-sub">Stay focused. Every second counts.</div>
+            <div class="study-timer" id="study-timer">00:00:00</div>
+            <div class="study-status" id="study-status">⏸ PAUSED</div>
+            <div class="study-cats" id="study-cats"></div>
+            <label class="lbl" style="text-align:left">SESSION NOTE (optional):</label>
+            <input id="study-note" class="inp" placeholder="e.g. Chapter 3, LeetCode arrays..." />
+            <div class="study-btns">
+                <button class="btn-study-pause" id="study-pause-btn" onclick="toggleStudy()">▶ Start</button>
+                <button class="btn-study-save" onclick="saveStudySession()">💾 Save Session</button>
+            </div>
+            <button class="btn-study-discard" onclick="discardStudy()">✕ Discard & Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/study.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/stats.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

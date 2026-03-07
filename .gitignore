@@ -1,0 +1,17 @@
+# OS files
+Thumbs.db
+.DS_Store
+
+# Secret config (has Supabase keys)
+js/config.js
+
+# Editor folders
+.vscode/
+.idea/
+
+# Node (if added later)
+node_modules/
+package-lock.json
+
+# Logs
+*.log
