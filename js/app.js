@@ -134,3 +134,9 @@ function populateTaskModalCats() {
   if (!sel) return;
   sel.innerHTML = STATE.cats.map(c => `<option value="${c.id}">${c.label}</option>`).join("");
 }
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('active');
+}

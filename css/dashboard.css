@@ -1677,3 +1677,36 @@ body {
         gap: 8px;
     }
 }
+
+/* Hamburger Button */
+.btn-hamburger {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 89;
+}
+
+@media (max-width: 640px) {
+    .btn-hamburger {
+        display: flex;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
