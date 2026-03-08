@@ -746,314 +746,320 @@
                 <div class="step">
                     <div class="step-num">1</div>
                     <div class="step-body">
-                        <div class="step-title">➕ Task Add Karo</div>
-                        <div class="step-desc">Header mein <span class="code">+ Task</span> button click karo. Title,
-                            Category, Priority (High/Medium/Low), Due Date, Notes, Tags aur Subtasks add kar sakte ho!
+                        <div class="step-title">➕ Add Tasks</div>
+                        <div class="step-desc">Click the <span class="code">+ Task</span> button in the header. You can
+                            add Title, Category, Priority (High/Medium/Low), Due Date, Notes, Tags, and even Subtasks!
                         </div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">2</div>
                     <div class="step-body">
-                        <div class="step-title">☀️ Views Switch Karo</div>
-                        <div class="step-desc">Sidebar mein <strong>Today</strong> (aaj ke tasks), <strong>All
-                                Tasks</strong> (saare pending tasks), aur <strong>Completed</strong> (done tasks) views
-                            hain.</div>
+                        <div class="step-title">☀️ Switch Views</div>
+                        <div class="step-desc">In the sidebar, you'll find views for <strong>Today</strong> (tasks for
+                            today), <strong>All Tasks</strong> (all pending tasks), and <strong>Completed</strong>
+                            (finished tasks).</div>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-num">3</div>
                     <div class="step-body">
                         <div class="step-title">🔍 Search & Filter</div>
-                        <div class="step-desc">Dashboard pe tasks ko name ya tags se search karo. Priority aur Date se
-                            filter/sort bhi kar sakte ho!</div>
+                        <div class="step-desc">Search for tasks by name or tags on the dashboard. You can also filter or
+                            sort them by priority and date!</div>
                     </div>
                 </div>
             </div>
 
             <div class="tip-box">
                 <div class="tip-icon">💡</div>
-                <div class="tip-text"><strong>Pro Tip:</strong> Ek task mein multiple subtasks add karo — har subtask
-                    complete karne par extra XP milta hai!</div>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" disabled>← Back</button>
-                <button class="btn-next" onclick="goTo(1)">Categories → </button>
+                <div class="tip-text"><strong>Pro Tip:</strong> Add multiple subtasks to a single task — completing each
+                    subtask earns you extra XP!</div>
             </div>
         </div>
 
-        <!-- SECTION 2: CATEGORIES -->
-        <div class="section" id="sec-1">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(0,238,255,0.1)">🏷️</div>
-                <div>
-                    <div class="sec-num">02 / 06</div>
-                    <div class="sec-title">Categories</div>
-                </div>
-            </div>
+        <div class="nav-btns">
+            <button class="btn-prev" disabled>← Back</button>
+            <button class="btn-next" onclick="goTo(1)">Categories → </button>
+        </div>
+    </div>
 
-            <div class="cards">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">⚙️</div>
-                        <div class="card-title">Categories Manage Karo</div>
-                        <span class="card-badge badge-cyan">Sidebar</span>
-                    </div>
-                    <div class="card-desc">Sidebar mein "CATEGORIES" ke paas ⚙ icon click karo. Nayi category banao,
-                        emoji aur color choose karo!</div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🎨</div>
-                        <div class="card-title">Custom Colors & Emojis</div>
-                        <span class="card-badge badge-green">Custom</span>
-                    </div>
-                    <div class="card-desc">Har category ke liye unique emoji aur color set karo — apne tasks ko visually
-                        organize karo!</div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <div class="card-title">Category Stats</div>
-                        <span class="card-badge badge-orange">Stats</span>
-                    </div>
-                    <div class="card-desc">Stats view mein dekho konsi category mein kitne tasks hain aur completion
-                        rate kya hai!</div>
-                </div>
-            </div>
-
-            <div class="tip-box">
-                <div class="tip-icon">🎯</div>
-                <div class="tip-text"><strong>Suggestion:</strong> Categories banao jaise <strong>Study, Work, Personal,
-                        Health</strong> — isse apna time clearly track kar sakte ho!</div>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" onclick="goTo(0)">← Tasks</button>
-                <button class="btn-next" onclick="goTo(2)">Habit Tracker →</button>
+    <!-- SECTION 2: CATEGORIES -->
+    <div class="section" id="sec-1">
+        <div class="sec-header">
+            <div class="sec-icon" style="background:rgba(0,238,255,0.1)">🏷️</div>
+            <div>
+                <div class="sec-num">02 / 06</div>
+                <div class="sec-title">Categories</div>
             </div>
         </div>
 
-        <!-- SECTION 3: HABITS -->
-        <div class="section" id="sec-2">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(255,153,0,0.1)">🔄</div>
-                <div>
-                    <div class="sec-num">03 / 06</div>
-                    <div class="sec-title">Habit Tracker</div>
+        <div class="cards">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⚙️</div>
+                    <div class="card-title">Manage Categories</div>
+                    <span class="card-badge badge-cyan">Sidebar</span>
+                </div>
+                <div class="card-desc">Click the ⚙ icon next to "CATEGORIES" in the sidebar. Create a new category, pick
+                    an emoji, and choose a color!</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎨</div>
+                    <div class="card-title">Custom Colors & Emojis</div>
+                    <span class="card-badge badge-green">Custom</span>
+                </div>
+                <div class="card-desc">Set a unique emoji and color for each category — visually organize your tasks!
                 </div>
             </div>
-
-            <div class="steps">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-body">
-                        <div class="step-title">🔄 Habit Tracker Open Karo</div>
-                        <div class="step-desc">Sidebar mein <span class="code">Habit Tracker</span> click karo.</div>
-                    </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Category Stats</div>
+                    <span class="card-badge badge-orange">Stats</span>
                 </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-body">
-                        <div class="step-title">➕ Daily Habit Add Karo</div>
-                        <div class="step-desc">Wo habits add karo jo roz karni hain — jaise <em>Exercise, Reading,
-                                Meditation</em>. Har din complete mark karo!</div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-body">
-                        <div class="step-title">🔥 Streak Banao</div>
-                        <div class="step-desc">Roz habits complete karo aur apni streak badhao! Lambi streak = zyada XP
-                            aur motivation!</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tip-box">
-                <div class="tip-icon">🔥</div>
-                <div class="tip-text"><strong>Challenge:</strong> 7 din ki streak banao aur dekho kitna powerful feel
-                    hota hai! Chhoti habits se shuru karo — ek din mein 2-3 habits kaafi hain!</div>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" onclick="goTo(1)">← Categories</button>
-                <button class="btn-next" onclick="goTo(3)">Pomodoro →</button>
+                <div class="card-desc">Check the Stats view to see how many tasks are in each category and your
+                    completion rate!</div>
             </div>
         </div>
 
-        <!-- SECTION 4: POMODORO + STUDY -->
-        <div class="section" id="sec-3">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(0,238,255,0.1)">⏱</div>
-                <div>
-                    <div class="sec-num">04 / 06</div>
-                    <div class="sec-title">Pomodoro & Study Mode</div>
-                </div>
-            </div>
+        <div class="tip-box">
+            <div class="tip-icon">🎯</div>
+            <div class="tip-text"><strong>Suggestion:</strong> Create categories like <strong>Study, Work, Personal,
+                    Health</strong> — it helps track your time clearly!</div>
+        </div>
+    </div>
 
-            <div class="cards" style="margin-bottom:20px">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">⏱</div>
-                        <div class="card-title">Pomodoro Timer</div>
-                        <span class="card-badge badge-cyan">Sidebar</span>
-                    </div>
-                    <div class="card-desc">
-                        Sidebar mein <strong>POMODORO</strong> section hai.<br><br>
-                        • <span class="code">▶ Start</span> — Focus session shuru karo (25 min)<br>
-                        • <span class="code">↺</span> — Reset karo<br>
-                        • <span class="code">edit</span> — Focus/Break time customize karo<br><br>
-                        Har session complete karne par <strong style="color:var(--green)">+50 XP</strong> milta hai!
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📚</div>
-                        <div class="card-title">Study Mode</div>
-                        <span class="card-badge badge-green">Header</span>
-                    </div>
-                    <div class="card-desc">
-                        Header mein <span class="code">📚 Study</span> button click karo.<br><br>
-                        • Fullscreen distraction-free timer<br>
-                        • Session note add karo (e.g. "Math Ch.3")<br>
-                        • <span class="code">💾 Save Session</span> — Time log karo<br>
-                        • <span class="code">✕ Discard</span> — Cancel karo
-                    </div>
-                </div>
-            </div>
+    <div class="nav-btns">
+        <button class="btn-prev" onclick="goTo(0)">← Tasks</button>
+        <button class="btn-next" onclick="goTo(2)">Habit Tracker →</button>
+    </div>
+    </div>
 
-            <div class="tip-box">
-                <div class="tip-icon">⚡</div>
-                <div class="tip-text"><strong>Pomodoro Technique:</strong> 25 min kaam karo, 5 min break lo. 4 sessions
-                    ke baad 15-30 min ka lamba break lo. Yeh scientifically proven productivity technique hai!</div>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" onclick="goTo(2)">← Habits</button>
-                <button class="btn-next" onclick="goTo(4)">Stats & XP →</button>
+    <!-- SECTION 3: HABITS -->
+    <div class="section" id="sec-2">
+        <div class="sec-header">
+            <div class="sec-icon" style="background:rgba(255,153,0,0.1)">🔄</div>
+            <div>
+                <div class="sec-num">03 / 06</div>
+                <div class="sec-title">Habit Tracker</div>
             </div>
         </div>
 
-        <!-- SECTION 5: STATS + XP -->
-        <div class="section" id="sec-4">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📊</div>
-                <div>
-                    <div class="sec-num">05 / 06</div>
-                    <div class="sec-title">Stats & XP System</div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <div class="step-title">🔄 Open Habit Tracker</div>
+                    <div class="step-desc">Click on <span class="code">Habit Tracker</span> in the sidebar.</div>
                 </div>
             </div>
-
-            <div class="xp-display">
-                <div style="font-size:14px;font-weight:700;margin-bottom:4px">🎮 XP Kaise Milta Hai?</div>
-                <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Productivity gamify karo — level up
-                    karo!</div>
-                <div class="xp-grid">
-                    <div class="xp-item">
-                        <div class="xp-val">+10</div>
-                        <div class="xp-lbl">Task Complete</div>
-                    </div>
-                    <div class="xp-item">
-                        <div class="xp-val">+50</div>
-                        <div class="xp-lbl">Pomodoro Done</div>
-                    </div>
-                    <div class="xp-item">
-                        <div class="xp-val">+25</div>
-                        <div class="xp-lbl">Study Session</div>
-                    </div>
-                    <div class="xp-item">
-                        <div class="xp-val">🔥</div>
-                        <div class="xp-lbl">Daily Streak</div>
-                    </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <div class="step-title">➕ Add Daily Habits</div>
+                    <div class="step-desc">Add routines you want to build every day — like <em>Exercise, Reading,
+                            Meditation</em>. Mark them complete daily!</div>
                 </div>
             </div>
-
-            <div class="shortcuts">
-                <div class="shortcut-row">
-                    <div class="shortcut-icon">☀️</div>
-                    <div class="shortcut-action">Aaj ke tasks dekho</div>
-                    <div class="shortcut-key">Sidebar → Today</div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <div class="step-title">🔥 Build Your Streak</div>
+                    <div class="step-desc">Complete habits daily to grow your streak! Longer streak = more XP and
+                        motivation!</div>
                 </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-icon">📊</div>
-                    <div class="shortcut-action">Detailed analytics</div>
-                    <div class="shortcut-key">Sidebar → Stats</div>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-icon">🏆</div>
-                    <div class="shortcut-action">Level & XP check karo</div>
-                    <div class="shortcut-key">Header → XP Bar</div>
-                </div>
-                <div class="shortcut-row">
-                    <div class="shortcut-icon">⚙️</div>
-                    <div class="shortcut-action">Profile & Settings</div>
-                    <div class="shortcut-key">Header → Avatar</div>
-                </div>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" onclick="goTo(3)">← Pomodoro</button>
-                <button class="btn-next" onclick="goTo(5)">Pro Tips →</button>
             </div>
         </div>
 
-        <!-- SECTION 6: COMPLETE -->
-        <div class="section" id="sec-5">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">🚀</div>
-                <div>
-                    <div class="sec-num">06 / 06</div>
-                    <div class="sec-title">Pro Tips & Launch!</div>
-                </div>
-            </div>
+        <div class="tip-box">
+            <div class="tip-icon">🔥</div>
+            <div class="tip-text"><strong>Challenge:</strong> Try building a 7-day streak to feel the impact! Start
+                small — 2-3 habits a day is enough!</div>
+        </div>
+    </div>
 
-            <div class="cards" style="margin-bottom:24px">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">📱</div>
-                        <div class="card-title">App Install Karo (PWA)</div>
-                        <span class="card-badge badge-green">Mobile</span>
-                    </div>
-                    <div class="card-desc">Chrome mein site kholo → 3 dots menu → <strong>"Add to Home Screen"</strong>
-                        → App ki tarah use karo! Offline bhi kaam karta hai!</div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">💻</div>
-                        <div class="card-title">Desktop App Install Karo</div>
-                        <span class="card-badge badge-cyan">Desktop</span>
-                    </div>
-                    <div class="card-desc">Chrome address bar mein <strong>install icon</strong> click karo → Desktop pe
-                        app aa jaayega!</div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-icon">🎯</div>
-                        <div class="card-title">Best Practice</div>
-                        <span class="card-badge badge-orange">Tip</span>
-                    </div>
-                    <div class="card-desc">Har subah <strong>Today view</strong> check karo, tasks prioritize karo,
-                        Pomodoro se kaam shuru karo — aur raat ko study session log karo!</div>
-                </div>
-            </div>
+    <div class="nav-btns">
+        <button class="btn-prev" onclick="goTo(1)">← Categories</button>
+        <button class="btn-next" onclick="goTo(3)">Pomodoro →</button>
+    </div>
+    </div>
 
-            <div class="complete-screen">
-                <span class="complete-emoji">🎉</span>
-                <div class="complete-title glow-green">Aap Ready Ho!</div>
-                <div class="complete-sub">Guide complete ki! Ab TaskMaster Pro pe jaao aur apni productivity journey
-                    shuru karo. Pehla task add karo aur XP kamana shuru karo!</div>
-                <a href="https://task-master.in" class="launch-btn" target="_blank">
-                    ⚡ TaskMaster Pro Launch Karo
-                </a>
-            </div>
-
-            <div class="nav-btns">
-                <button class="btn-prev" onclick="goTo(4)">← Stats</button>
-                <button class="btn-next" onclick="window.open('https://task-master.in','_blank')">🚀 Launch App</button>
+    <!-- SECTION 4: POMODORO + STUDY -->
+    <div class="section" id="sec-3">
+        <div class="sec-header">
+            <div class="sec-icon" style="background:rgba(0,238,255,0.1)">⏱</div>
+            <div>
+                <div class="sec-num">04 / 06</div>
+                <div class="sec-title">Pomodoro & Study Mode</div>
             </div>
         </div>
+
+        <div class="cards" style="margin-bottom:20px">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⏱</div>
+                    <div class="card-title">Pomodoro Timer</div>
+                    <span class="card-badge badge-cyan">Sidebar</span>
+                </div>
+                <div class="card-desc">
+                    You'll find the <strong>POMODORO</strong> section in the sidebar.<br><br>
+                    • <span class="code">▶ Start</span> — Begin a focus session (25 min)<br>
+                    • <span class="code">↺</span> — Reset timer<br>
+                    • <span class="code">edit</span> — Customize Focus/Break intervals<br><br>
+                    Earn <strong style="color:var(--green)">+50 XP</strong> for completing a session!
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📚</div>
+                    <div class="card-title">Study Mode</div>
+                    <span class="card-badge badge-green">Header</span>
+                </div>
+                <div class="card-desc">
+                    Click the <span class="code">📚 Study</span> button in the header.<br><br>
+                    • Fullscreen distraction-free timer<br>
+                    • Add a session note (e.g. "Math Ch.3")<br>
+                    • <span class="code">💾 Save Session</span> — Log your time<br>
+                    • <span class="code">✕ Discard</span> — Cancel session
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-icon">⚡</div>
+            <div class="tip-text"><strong>Pomodoro Technique:</strong> Work for 25 min, take a 5 min break. After 4
+                sessions, take a longer 15-30 min break. It's a scientifically proven productivity method!</div>
+        </div>
+    </div>
+
+    <div class="nav-btns">
+        <button class="btn-prev" onclick="goTo(2)">← Habits</button>
+        <button class="btn-next" onclick="goTo(4)">Stats & XP →</button>
+    </div>
+    </div>
+
+    <!-- SECTION 5: STATS + XP -->
+    <div class="section" id="sec-4">
+        <div class="sec-header">
+            <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📊</div>
+            <div>
+                <div class="sec-num">05 / 06</div>
+                <div class="sec-title">Stats & XP System</div>
+            </div>
+        </div>
+
+        <div class="xp-display">
+            <div style="font-size:14px;font-weight:700;margin-bottom:4px">🎮 How the XP System Works</div>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Gamify your productivity — level up as you
+                go!</div>
+            <div class="xp-grid">
+                <div class="xp-item">
+                    <div class="xp-val">+10</div>
+                    <div class="xp-lbl">Task Complete</div>
+                </div>
+                <div class="xp-item">
+                    <div class="xp-val">+50</div>
+                    <div class="xp-lbl">Pomodoro Done</div>
+                </div>
+                <div class="xp-item">
+                    <div class="xp-val">+25</div>
+                    <div class="xp-lbl">Study Session</div>
+                </div>
+                <div class="xp-item">
+                    <div class="xp-val">🔥</div>
+                    <div class="xp-lbl">Daily Streak</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shortcuts">
+            <div class="shortcut-row">
+                <div class="shortcut-icon">☀️</div>
+                <div class="shortcut-action">View today's tasks</div>
+                <div class="shortcut-key">Sidebar → Today</div>
+            </div>
+            <div class="shortcut-row">
+                <div class="shortcut-icon">📊</div>
+                <div class="shortcut-action">See detailed analytics</div>
+                <div class="shortcut-key">Sidebar → Stats</div>
+            </div>
+            <div class="shortcut-row">
+                <div class="shortcut-icon">🏆</div>
+                <div class="shortcut-action">Check your Level & XP</div>
+                <div class="shortcut-key">Header → XP Bar</div>
+            </div>
+            <div class="shortcut-row">
+                <div class="shortcut-icon">⚙️</div>
+                <div class="shortcut-action">Profile & Settings</div>
+                <div class="shortcut-key">Header → Avatar</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-btns">
+        <button class="btn-prev" onclick="goTo(3)">← Pomodoro</button>
+        <button class="btn-next" onclick="goTo(5)">Pro Tips →</button>
+    </div>
+    </div>
+
+    <!-- SECTION 6: COMPLETE -->
+    <div class="section" id="sec-5">
+        <div class="sec-header">
+            <div class="sec-icon" style="background:rgba(0,255,136,0.1)">🚀</div>
+            <div>
+                <div class="sec-num">06 / 06</div>
+                <div class="sec-title">Pro Tips & Launch!</div>
+            </div>
+        </div>
+
+        <div class="cards" style="margin-bottom:24px">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">📱</div>
+                    <div class="card-title">Install App (PWA)</div>
+                    <span class="card-badge badge-green">Mobile</span>
+                </div>
+                <div class="card-desc">Open the site in Chrome → tap the 3 dots menu → <strong>"Add to Home
+                        Screen"</strong> → Use it like a native app! It even works offline!</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Desktop App Install</div>
+                    <span class="card-badge badge-cyan">Desktop</span>
+                </div>
+                <div class="card-desc">Click the <strong>install icon</strong> in your Chrome address bar → The app will
+                    be available right on your desktop!</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🎯</div>
+                    <div class="card-title">Best Practice</div>
+                    <span class="card-badge badge-orange">Tip</span>
+                </div>
+                <div class="card-desc">Every morning, check the <strong>Today view</strong>, prioritize tasks, start a
+                    Pomodoro, and log your study sessions at night!</div>
+            </div>
+        </div>
+
+        <div class="complete-screen">
+            <span class="complete-emoji">🎉</span>
+            <div class="complete-title glow-green">You're All Set!</div>
+            <div class="complete-sub">Guide complete! Now open TaskMaster Pro and start your productivity journey. Add
+                your first task and start earning XP!</div>
+            <a href="https://task-master.in" class="launch-btn" target="_blank">
+                ⚡ Launch TaskMaster Pro
+            </a>
+        </div>
+    </div>
+
+    <div class="nav-btns">
+        <button class="btn-prev" onclick="goTo(4)">← Stats</button>
+        <button class="btn-next" onclick="window.open('https://task-master.in','_blank')">🚀 Launch App</button>
+    </div>
+    </div>
 
     </div>
 
