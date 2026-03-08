@@ -9,6 +9,12 @@
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
         rel="stylesheet" />
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
         :root {
             --bg: #0d1117;
             --surface: #161b22;
@@ -19,151 +25,105 @@
             --red: #ff4444;
             --text: #e6edf3;
             --muted: #8b949e;
-            --dim: #484f58;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --dim: #484f58
         }
 
         body {
             background: var(--bg);
             color: var(--text);
             font-family: 'Syne', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            min-height: 100vh
         }
 
-        /* ── PARTICLES BG ── */
-        #particles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatUp linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 0.5;
-            }
-
-            100% {
-                transform: translateY(-10vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* ── HEADER ── */
-        .header {
+        .hdr {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(13, 17, 23, 0.9);
+            z-index: 200;
+            background: rgba(13, 17, 23, .95);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            padding: 14px 24px;
+            padding: 12px 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-between
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
-            color: var(--green);
-            letter-spacing: -0.5px;
+            color: var(--green)
         }
 
         .logo span {
-            color: var(--text);
+            color: var(--text)
         }
 
-        .progress-wrap {
+        .pw {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            color: var(--muted);
+            gap: 10px
         }
 
-        .progress-bar {
-            width: 140px;
+        .pb {
+            width: 120px;
             height: 4px;
             background: var(--border);
             border-radius: 2px;
-            overflow: hidden;
+            overflow: hidden
         }
 
-        .progress-fill {
+        .pf {
             height: 100%;
+            width: 0%;
             background: linear-gradient(90deg, var(--green), var(--cyan));
             border-radius: 2px;
-            transition: width 0.5s ease;
+            transition: width .4s
         }
 
-        /* ── HERO ── */
+        .pt {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--muted);
+            display: none
+        }
+
         .hero {
-            position: relative;
-            z-index: 1;
             text-align: center;
-            padding: 80px 24px 60px;
+            padding: 70px 20px 50px
         }
 
-        .hero-badge {
+        .hbadge {
             display: inline-block;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            background: rgba(0, 255, 136, .1);
+            border: 1px solid rgba(0, 255, 136, .3);
             border-radius: 20px;
-            padding: 6px 16px;
+            padding: 5px 16px;
             font-size: 12px;
             color: var(--green);
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 20px;
-            animation: fadeDown 0.6s ease both;
+            margin-bottom: 20px
         }
 
         .hero h1 {
-            font-size: clamp(36px, 8vw, 72px);
+            font-size: clamp(30px, 7vw, 60px);
             font-weight: 800;
-            line-height: 1;
-            margin-bottom: 16px;
-            animation: fadeDown 0.6s 0.1s ease both;
+            line-height: 1.05;
+            margin-bottom: 14px
         }
 
-        .hero h1 .accent {
-            color: var(--green);
+        .hero h1 .g {
+            color: var(--green)
         }
 
         .hero p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--muted);
-            max-width: 500px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            animation: fadeDown 0.6s 0.2s ease both;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.7
         }
 
-        .hero-cta {
+        .sbtn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -175,23 +135,20 @@
             border-radius: 12px;
             border: none;
             cursor: pointer;
-            animation: fadeDown 0.6s 0.3s ease both;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Syne', sans-serif;
+            transition: transform .2s, box-shadow .2s
         }
 
-        .hero-cta:hover {
+        .sbtn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 255, 136, .3)
         }
 
-        /* ── NAV DOTS ── */
-        .nav-dots {
-            display: flex;
+        .dots {
+            display: none;
             justify-content: center;
             gap: 8px;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
+            padding: 16px 0
         }
 
         .dot {
@@ -199,203 +156,106 @@
             height: 8px;
             border-radius: 50%;
             background: var(--border);
-            cursor: pointer;
-            transition: all 0.3s;
             border: none;
+            cursor: pointer;
+            transition: all .3s
         }
 
-        .dot.active {
+        .dot.on {
             background: var(--green);
-            width: 24px;
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            width: 22px;
+            border-radius: 4px
         }
 
-        /* ── SECTIONS ── */
-        .sections {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 24px 80px;
-        }
-
-        .section {
+        .wrap {
             display: none;
-            animation: fadeIn 0.4s ease;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+            flex-direction: column;
+            min-height: calc(100vh - 78px);
         }
 
-        .section.active {
-            display: block;
+        .sec {
+            display: none;
+            flex-direction: column;
+            flex: 1;
         }
 
-        @keyframes fadeIn {
+        .sec.on {
+            display: flex;
+            animation: fu .35s ease
+        }
+
+        @keyframes fu {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(16px)
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0)
             }
         }
 
-        @keyframes fadeDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ── SECTION HEADER ── */
-        .sec-header {
+        .sh {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 32px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            gap: 14px;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border)
         }
 
-        .sec-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+        .si {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            flex-shrink: 0;
+            font-size: 26px;
+            flex-shrink: 0
         }
 
-        .sec-num {
+        .sn {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--dim);
-            margin-bottom: 4px;
-        }
-
-        .sec-title {
-            font-size: 28px;
-            font-weight: 800;
-        }
-
-        /* ── CARDS ── */
-        .cards {
-            display: grid;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent, rgba(0, 255, 136, 0.03));
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:hover {
-            border-color: rgba(0, 255, 136, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.08);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .card-icon {
-            font-size: 22px;
-        }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .card-badge {
-            margin-left: auto;
             font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
+            color: var(--dim);
+            margin-bottom: 3px
         }
 
-        .badge-green {
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--green);
+        .st {
+            font-size: 26px;
+            font-weight: 800
         }
 
-        .badge-cyan {
-            background: rgba(0, 238, 255, 0.1);
-            color: var(--cyan);
-        }
-
-        .badge-orange {
-            background: rgba(255, 153, 0, 0.1);
-            color: var(--orange);
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        /* ── STEPS ── */
         .steps {
             display: flex;
             flex-direction: column;
-            gap: 0;
-            margin-bottom: 24px;
+            margin-bottom: 20px
         }
 
         .step {
             display: flex;
-            gap: 16px;
-            position: relative;
+            gap: 14px;
+            position: relative
         }
 
         .step:not(:last-child)::after {
             content: '';
             position: absolute;
-            left: 19px;
-            top: 44px;
-            bottom: -8px;
+            left: 17px;
+            top: 40px;
+            bottom: 0;
             width: 2px;
-            background: linear-gradient(to bottom, var(--green), transparent);
-            opacity: 0.3;
+            background: linear-gradient(to bottom, rgba(0, 255, 136, .35), transparent)
         }
 
-        .step-num {
-            width: 40px;
-            height: 40px;
+        .stepn {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: var(--bg);
             border: 2px solid var(--green);
@@ -403,715 +263,693 @@
             align-items: center;
             justify-content: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--green);
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: 2px
         }
 
-        .step-body {
-            padding-bottom: 24px;
-            flex: 1;
+        .stepb {
+            padding-bottom: 20px;
+            flex: 1
         }
 
-        .step-title {
+        .stept {
             font-size: 15px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 5px
         }
 
-        .step-desc {
+        .stepd {
             font-size: 13px;
             color: var(--muted);
-            line-height: 1.7;
+            line-height: 1.7
         }
 
-        /* ── TIP BOX ── */
-        .tip-box {
-            background: rgba(0, 255, 136, 0.06);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 12px;
-            padding: 16px 20px;
+        .cards {
             display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            margin-bottom: 24px;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px
         }
 
-        .tip-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .tip-text {
-            font-size: 13px;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .tip-text strong {
-            color: var(--green);
-        }
-
-        /* ── CODE TAG ── */
-        .code {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 2px 8px;
-            color: var(--cyan);
-        }
-
-        /* ── SHORTCUT TABLE ── */
-        .shortcuts {
+        .card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 24px;
+            border-radius: 14px;
+            padding: 18px;
+            transition: all .2s
         }
 
-        .shortcut-row {
+        .card:hover {
+            border-color: rgba(0, 255, 136, .3);
+            transform: translateY(-1px)
+        }
+
+        .ch {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.15s;
+            gap: 10px;
+            margin-bottom: 8px
         }
 
-        .shortcut-row:last-child {
-            border-bottom: none;
+        .ci {
+            font-size: 20px
         }
 
-        .shortcut-row:hover {
-            background: rgba(255, 255, 255, 0.02);
+        .ct {
+            font-size: 14px;
+            font-weight: 700;
+            flex: 1
         }
 
-        .shortcut-icon {
-            font-size: 18px;
-            width: 28px;
-            text-align: center;
+        .bdg {
+            font-size: 10px;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600
         }
 
-        .shortcut-action {
-            flex: 1;
+        .bg {
+            background: rgba(0, 255, 136, .12);
+            color: var(--green)
+        }
+
+        .bc {
+            background: rgba(0, 238, 255, .12);
+            color: var(--cyan)
+        }
+
+        .bo {
+            background: rgba(255, 153, 0, .12);
+            color: var(--orange)
+        }
+
+        .cd {
             font-size: 13px;
             color: var(--muted);
+            line-height: 1.7
         }
 
-        .shortcut-key {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--green);
-            background: rgba(0, 255, 136, 0.08);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            padding: 3px 10px;
-            border-radius: 6px;
+        .tip {
+            background: rgba(0, 255, 136, .06);
+            border: 1px solid rgba(0, 255, 136, .2);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px
         }
 
-        /* ── XP DISPLAY ── */
-        .xp-display {
+        .tii {
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 1px
+        }
+
+        .tit {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .tit strong {
+            color: var(--green)
+        }
+
+        .xpbox {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 24px;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 20px
         }
 
-        .xp-grid {
+        .xpg {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 14px
         }
 
-        .xp-item {
+        .xpi {
             background: var(--bg);
-            border-radius: 10px;
-            padding: 14px 12px;
-            text-align: center;
             border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center
         }
 
-        .xp-val {
+        .xpv {
             font-family: 'JetBrains Mono', monospace;
             font-size: 22px;
             font-weight: 600;
             color: var(--green);
-            margin-bottom: 4px;
+            margin-bottom: 4px
         }
 
-        .xp-lbl {
+        .xpl {
             font-size: 11px;
-            color: var(--dim);
+            color: var(--dim)
         }
 
-        /* ── NAV BUTTONS ── */
-        .nav-btns {
-            display: flex;
-            gap: 12px;
-            justify-content: space-between;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-
-        .btn-prev,
-        .btn-next {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 700;
-            font-family: 'Syne', sans-serif;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-        }
-
-        .btn-prev {
+        .shorts {
             background: var(--surface);
             border: 1px solid var(--border);
-            color: var(--muted);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px
         }
 
-        .btn-prev:hover {
-            background: var(--border);
-            color: var(--text);
+        .sr {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 16px;
+            border-bottom: 1px solid var(--border)
         }
 
-        .btn-next {
-            background: linear-gradient(135deg, var(--green), #00cc6a);
-            color: var(--bg);
-            margin-left: auto;
+        .sr:last-child {
+            border-bottom: none
         }
 
-        .btn-next:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
+        .sri {
+            font-size: 16px;
+            width: 24px;
+            text-align: center
         }
 
-        .btn-prev:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
+        .sra {
+            flex: 1;
+            font-size: 13px;
+            color: var(--muted)
         }
 
-        /* ── COMPLETE SCREEN ── */
-        .complete-screen {
+        .srk {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--green);
+            background: rgba(0, 255, 136, .08);
+            border: 1px solid rgba(0, 255, 136, .2);
+            padding: 3px 10px;
+            border-radius: 6px;
+            white-space: nowrap
+        }
+
+        .comp {
             text-align: center;
-            padding: 40px 0;
+            padding: 30px 0
         }
 
-        .complete-emoji {
-            font-size: 72px;
+        .cemo {
+            font-size: 64px;
             display: block;
-            margin-bottom: 16px;
-            animation: bounce 1s ease infinite;
+            margin-bottom: 14px;
+            animation: bob 1.5s ease infinite
         }
 
-        @keyframes bounce {
+        @keyframes bob {
 
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(0)
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-8px)
             }
         }
 
-        .complete-title {
-            font-size: 36px;
+        .cttl {
+            font-size: 32px;
             font-weight: 800;
             color: var(--green);
-            margin-bottom: 12px;
+            margin-bottom: 10px
         }
 
-        .complete-sub {
-            font-size: 15px;
+        .csub {
+            font-size: 14px;
             color: var(--muted);
-            margin-bottom: 32px;
-            line-height: 1.6;
+            margin-bottom: 28px;
+            line-height: 1.7
         }
 
-        .launch-btn {
+        .launch {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             background: linear-gradient(135deg, var(--green), var(--cyan));
             color: var(--bg);
             font-weight: 800;
-            font-size: 15px;
-            padding: 16px 32px;
-            border-radius: 14px;
+            font-size: 14px;
+            padding: 15px 30px;
+            border-radius: 12px;
             border: none;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.2s;
+            font-family: 'Syne', sans-serif;
+            transition: all .2s
         }
 
-        .launch-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 16px 40px rgba(0, 255, 136, 0.3);
+        .launch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(0, 255, 136, .3)
         }
 
-        /* ── MOBILE ── */
-        @media (max-width: 480px) {
+        .nr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border)
+        }
+
+        .bp,
+        .bn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            cursor: pointer;
+            border: none;
+            transition: all .2s
+        }
+
+        .bp {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--muted)
+        }
+
+        .bp:hover {
+            background: var(--border);
+            color: var(--text)
+        }
+
+        .bn {
+            background: linear-gradient(135deg, var(--green), #00cc6a);
+            color: var(--bg)
+        }
+
+        .bn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0, 255, 136, .3)
+        }
+
+        .bp:disabled {
+            opacity: .3;
+            cursor: not-allowed;
+            pointer-events: none
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 1px 7px;
+            color: var(--cyan)
+        }
+
+        @media(max-width:480px) {
             .hero {
-                padding: 50px 16px 40px;
+                padding: 50px 16px 36px
             }
 
-            .sections {
-                padding: 0 16px 60px;
+            .wrap {
+                padding: 0 14px 60px
             }
-
-            .sec-title {
-                font-size: 22px;
-            }
-
-            .progress-bar {
-                width: 80px;
-            }
-        }
-
-        /* ── GLOW EFFECTS ── */
-        .glow-green {
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        .glow-cyan {
-            text-shadow: 0 0 20px rgba(0, 238, 255, 0.5);
         }
     </style>
 </head>
 
 <body>
 
-    <div id="particles"></div>
-
-    <!-- HEADER -->
-    <header class="header">
+    <header class="hdr">
         <div class="logo">⚡ Task<span>Master</span> Pro</div>
-        <div class="progress-wrap">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+        <div class="pw">
+            <div class="pb">
+                <div class="pf" id="pf"></div>
             </div>
-            <span id="progress-text">0 / 6</span>
+            <span class="pt" id="pt">1 / 6</span>
         </div>
     </header>
 
-    <!-- HERO -->
     <div class="hero" id="hero">
-        <div class="hero-badge">📖 Interactive User Guide</div>
-        <h1>Master Your <span class="accent">Productivity</span></h1>
-        <p>Learn everything about TaskMaster Pro in 6 quick steps. From tasks to streaks — become a power user!</p>
-        <button class="hero-cta" onclick="startGuide()">
-            🚀 Start Guide
-            <span style="font-size:18px">→</span>
-        </button>
+        <div class="hbadge">📖 Interactive User Guide</div>
+        <h1>Master Your<br><span class="g">Productivity</span></h1>
+        <p>Learn everything about TaskMaster Pro in 6 quick steps. From tasks to streaks — become a power user today!
+        </p>
+        <button class="sbtn" onclick="startGuide()">🚀 Start Guide &nbsp;→</button>
     </div>
 
-    <!-- NAV DOTS -->
-    <div class="nav-dots" id="nav-dots" style="display:none">
-        <button class="dot active" onclick="goTo(0)"></button>
-        <button class="dot" onclick="goTo(1)"></button>
-        <button class="dot" onclick="goTo(2)"></button>
-        <button class="dot" onclick="goTo(3)"></button>
-        <button class="dot" onclick="goTo(4)"></button>
-        <button class="dot" onclick="goTo(5)"></button>
+    <div class="dots" id="dots">
+        <button class="dot on" onclick="go(0)"></button>
+        <button class="dot" onclick="go(1)"></button>
+        <button class="dot" onclick="go(2)"></button>
+        <button class="dot" onclick="go(3)"></button>
+        <button class="dot" onclick="go(4)"></button>
+        <button class="dot" onclick="go(5)"></button>
     </div>
 
-    <!-- SECTIONS -->
-    <div class="sections" id="sections" style="display:none">
+    <div class="wrap" id="wrap">
 
-        <!-- SECTION 1: TASKS -->
-        <div class="section active" id="sec-0">
-            <div class="sec-header">
-                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📋</div>
+        <!-- SEC 0: TASKS -->
+        <div class="sec on" id="s0">
+            <div class="sh">
+                <div class="si" style="background:rgba(0,255,136,.1)">📋</div>
                 <div>
-                    <div class="sec-num">01 / 06</div>
-                    <div class="sec-title">Task Management</div>
+                    <div class="sn">01 / 06</div>
+                    <div class="st">Task Management</div>
                 </div>
             </div>
-
             <div class="steps">
                 <div class="step">
-                    <div class="step-num">1</div>
-                    <div class="step-body">
-                        <div class="step-title">➕ Add Tasks</div>
-                        <div class="step-desc">Click the <span class="code">+ Task</span> button in the header. You can
-                            add Title, Category, Priority (High/Medium/Low), Due Date, Notes, Tags, and even Subtasks!
+                    <div class="stepn">1</div>
+                    <div class="stepb">
+                        <div class="stept">➕ Add a Task</div>
+                        <div class="stepd">Click the <code>+ Task</code> button in the top header. Fill in the title,
+                            category, priority (High / Medium / Low), due date, notes, tags, and even subtasks.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="stepn">2</div>
+                    <div class="stepb">
+                        <div class="stept">☀️ Switch Views</div>
+                        <div class="stepd">Use the sidebar to navigate between <strong>Today</strong> (tasks due today),
+                            <strong>All Tasks</strong> (all pending tasks), and <strong>Completed</strong> (finished
+                            tasks).
                         </div>
                     </div>
                 </div>
                 <div class="step">
-                    <div class="step-num">2</div>
-                    <div class="step-body">
-                        <div class="step-title">☀️ Switch Views</div>
-                        <div class="step-desc">In the sidebar, you'll find views for <strong>Today</strong> (tasks for
-                            today), <strong>All Tasks</strong> (all pending tasks), and <strong>Completed</strong>
-                            (finished tasks).</div>
+                    <div class="stepn">3</div>
+                    <div class="stepb">
+                        <div class="stept">🔍 Search & Filter</div>
+                        <div class="stepd">Search tasks by name or tags using the search bar. Filter by priority and
+                            sort by Date, Priority, or Name using the dropdowns.</div>
                     </div>
                 </div>
                 <div class="step">
-                    <div class="step-num">3</div>
-                    <div class="step-body">
-                        <div class="step-title">🔍 Search & Filter</div>
-                        <div class="step-desc">Search for tasks by name or tags on the dashboard. You can also filter or
-                            sort them by priority and date!</div>
+                    <div class="stepn">4</div>
+                    <div class="stepb">
+                        <div class="stept">✅ Complete a Task</div>
+                        <div class="stepd">Click the checkbox next to any task to mark it complete — you'll earn XP
+                            instantly! Click the task card to view full details.</div>
                     </div>
                 </div>
             </div>
-
-            <div class="tip-box">
-                <div class="tip-icon">💡</div>
-                <div class="tip-text"><strong>Pro Tip:</strong> Add multiple subtasks to a single task — completing each
-                    subtask earns you extra XP!</div>
+            <div class="tip">
+                <div class="tii">💡</div>
+                <div class="tit"><strong>Pro Tip:</strong> Add multiple subtasks inside a single task — each subtask
+                    completion earns you bonus XP!</div>
             </div>
+            <div class="nr"><button class="bp" disabled>← Back</button><button class="bn" onclick="go(1)">Categories
+                    →</button></div>
         </div>
 
-        <div class="nav-btns">
-            <button class="btn-prev" disabled>← Back</button>
-            <button class="btn-next" onclick="goTo(1)">Categories → </button>
-        </div>
-    </div>
-
-    <!-- SECTION 2: CATEGORIES -->
-    <div class="section" id="sec-1">
-        <div class="sec-header">
-            <div class="sec-icon" style="background:rgba(0,238,255,0.1)">🏷️</div>
-            <div>
-                <div class="sec-num">02 / 06</div>
-                <div class="sec-title">Categories</div>
-            </div>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">⚙️</div>
-                    <div class="card-title">Manage Categories</div>
-                    <span class="card-badge badge-cyan">Sidebar</span>
-                </div>
-                <div class="card-desc">Click the ⚙ icon next to "CATEGORIES" in the sidebar. Create a new category, pick
-                    an emoji, and choose a color!</div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">🎨</div>
-                    <div class="card-title">Custom Colors & Emojis</div>
-                    <span class="card-badge badge-green">Custom</span>
-                </div>
-                <div class="card-desc">Set a unique emoji and color for each category — visually organize your tasks!
+        <!-- SEC 1: CATEGORIES -->
+        <div class="sec" id="s1">
+            <div class="sh">
+                <div class="si" style="background:rgba(0,238,255,.1)">🏷️</div>
+                <div>
+                    <div class="sn">02 / 06</div>
+                    <div class="st">Categories</div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">📊</div>
-                    <div class="card-title">Category Stats</div>
-                    <span class="card-badge badge-orange">Stats</span>
+            <div class="cards">
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">⚙️</div>
+                        <div class="ct">Manage Categories</div><span class="bdg bc">Sidebar</span>
+                    </div>
+                    <div class="cd">Click the gear icon <code>⚙</code> next to "CATEGORIES" in the sidebar. Create new
+                        categories, pick an emoji, and choose a color to identify them easily.</div>
                 </div>
-                <div class="card-desc">Check the Stats view to see how many tasks are in each category and your
-                    completion rate!</div>
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">🎨</div>
+                        <div class="ct">Custom Colors & Emojis</div><span class="bdg bg">Custom</span>
+                    </div>
+                    <div class="cd">Assign a unique emoji and color to each category for quick visual recognition.
+                        Example: 📚 Study (blue), 💼 Work (green), 🏃 Health (orange).</div>
+                </div>
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">📊</div>
+                        <div class="ct">Category Stats</div><span class="bdg bo">Stats</span>
+                    </div>
+                    <div class="cd">Open the Stats view to see how many tasks belong to each category and what your
+                        completion rate is per category.</div>
+                </div>
             </div>
-        </div>
-
-        <div class="tip-box">
-            <div class="tip-icon">🎯</div>
-            <div class="tip-text"><strong>Suggestion:</strong> Create categories like <strong>Study, Work, Personal,
-                    Health</strong> — it helps track your time clearly!</div>
-        </div>
-    </div>
-
-    <div class="nav-btns">
-        <button class="btn-prev" onclick="goTo(0)">← Tasks</button>
-        <button class="btn-next" onclick="goTo(2)">Habit Tracker →</button>
-    </div>
-    </div>
-
-    <!-- SECTION 3: HABITS -->
-    <div class="section" id="sec-2">
-        <div class="sec-header">
-            <div class="sec-icon" style="background:rgba(255,153,0,0.1)">🔄</div>
-            <div>
-                <div class="sec-num">03 / 06</div>
-                <div class="sec-title">Habit Tracker</div>
+            <div class="tip">
+                <div class="tii">🎯</div>
+                <div class="tit"><strong>Suggestion:</strong> Start with categories like <strong>Study, Work,
+                        Personal,</strong> and <strong>Health</strong> — this helps you track exactly where your time
+                    goes.</div>
             </div>
+            <div class="nr"><button class="bp" onclick="go(0)">← Tasks</button><button class="bn" onclick="go(2)">Habit
+                    Tracker →</button></div>
         </div>
 
-        <div class="steps">
-            <div class="step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                    <div class="step-title">🔄 Open Habit Tracker</div>
-                    <div class="step-desc">Click on <span class="code">Habit Tracker</span> in the sidebar.</div>
+        <!-- SEC 2: HABITS -->
+        <div class="sec" id="s2">
+            <div class="sh">
+                <div class="si" style="background:rgba(255,153,0,.1)">🔄</div>
+                <div>
+                    <div class="sn">03 / 06</div>
+                    <div class="st">Habit Tracker</div>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <div class="step-body">
-                    <div class="step-title">➕ Add Daily Habits</div>
-                    <div class="step-desc">Add routines you want to build every day — like <em>Exercise, Reading,
-                            Meditation</em>. Mark them complete daily!</div>
+            <div class="steps">
+                <div class="step">
+                    <div class="stepn">1</div>
+                    <div class="stepb">
+                        <div class="stept">🔄 Open Habit Tracker</div>
+                        <div class="stepd">Click <code>Habit Tracker</code> in the sidebar to open your daily habits
+                            dashboard.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="stepn">2</div>
+                    <div class="stepb">
+                        <div class="stept">➕ Add Daily Habits</div>
+                        <div class="stepd">Add habits you want to build — such as Exercise, Reading, or Meditation.
+                            Start small with 2–3 habits per day for best results.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="stepn">3</div>
+                    <div class="stepb">
+                        <div class="stept">🔥 Build Your Streak</div>
+                        <div class="stepd">Mark each habit as done every day to grow your streak. A longer streak means
+                            more XP and stronger motivation to keep going!</div>
+                    </div>
                 </div>
             </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <div class="step-body">
-                    <div class="step-title">🔥 Build Your Streak</div>
-                    <div class="step-desc">Complete habits daily to grow your streak! Longer streak = more XP and
-                        motivation!</div>
-                </div>
+            <div class="tip">
+                <div class="tii">🔥</div>
+                <div class="tit"><strong>Challenge:</strong> Try building a 7-day streak! Research shows repeating an
+                    action for 21 days turns it into a lasting habit.</div>
             </div>
+            <div class="nr"><button class="bp" onclick="go(1)">← Categories</button><button class="bn"
+                    onclick="go(3)">Pomodoro →</button></div>
         </div>
 
-        <div class="tip-box">
-            <div class="tip-icon">🔥</div>
-            <div class="tip-text"><strong>Challenge:</strong> Try building a 7-day streak to feel the impact! Start
-                small — 2-3 habits a day is enough!</div>
-        </div>
-    </div>
-
-    <div class="nav-btns">
-        <button class="btn-prev" onclick="goTo(1)">← Categories</button>
-        <button class="btn-next" onclick="goTo(3)">Pomodoro →</button>
-    </div>
-    </div>
-
-    <!-- SECTION 4: POMODORO + STUDY -->
-    <div class="section" id="sec-3">
-        <div class="sec-header">
-            <div class="sec-icon" style="background:rgba(0,238,255,0.1)">⏱</div>
-            <div>
-                <div class="sec-num">04 / 06</div>
-                <div class="sec-title">Pomodoro & Study Mode</div>
-            </div>
-        </div>
-
-        <div class="cards" style="margin-bottom:20px">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">⏱</div>
-                    <div class="card-title">Pomodoro Timer</div>
-                    <span class="card-badge badge-cyan">Sidebar</span>
-                </div>
-                <div class="card-desc">
-                    You'll find the <strong>POMODORO</strong> section in the sidebar.<br><br>
-                    • <span class="code">▶ Start</span> — Begin a focus session (25 min)<br>
-                    • <span class="code">↺</span> — Reset timer<br>
-                    • <span class="code">edit</span> — Customize Focus/Break intervals<br><br>
-                    Earn <strong style="color:var(--green)">+50 XP</strong> for completing a session!
+        <!-- SEC 3: POMODORO -->
+        <div class="sec" id="s3">
+            <div class="sh">
+                <div class="si" style="background:rgba(0,238,255,.1)">⏱</div>
+                <div>
+                    <div class="sn">04 / 06</div>
+                    <div class="st">Pomodoro & Study Mode</div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">📚</div>
-                    <div class="card-title">Study Mode</div>
-                    <span class="card-badge badge-green">Header</span>
+            <div class="cards">
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">⏱</div>
+                        <div class="ct">Pomodoro Timer</div><span class="bdg bc">Sidebar</span>
+                    </div>
+                    <div class="cd">
+                        Find the <strong>POMODORO</strong> section in the sidebar:<br><br>
+                        • <code>▶ Start</code> — Begin a 25-minute focus session<br>
+                        • <code>↺</code> — Reset the timer<br>
+                        • <code>edit</code> — Customize your Focus and Break durations<br><br>
+                        Completing each session earns you <strong style="color:var(--green)">+50 XP!</strong>
+                    </div>
                 </div>
-                <div class="card-desc">
-                    Click the <span class="code">📚 Study</span> button in the header.<br><br>
-                    • Fullscreen distraction-free timer<br>
-                    • Add a session note (e.g. "Math Ch.3")<br>
-                    • <span class="code">💾 Save Session</span> — Log your time<br>
-                    • <span class="code">✕ Discard</span> — Cancel session
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">📚</div>
+                        <div class="ct">Study Mode</div><span class="bdg bg">Header</span>
+                    </div>
+                    <div class="cd">
+                        Click the <code>📚 Study</code> button in the header to launch a fullscreen, distraction-free
+                        timer:<br><br>
+                        • Add a session note (e.g. "Math Chapter 3")<br>
+                        • Select a category<br>
+                        • <code>💾 Save Session</code> — Log your study time<br>
+                        • <code>✕ Discard</code> — Cancel without saving
+                    </div>
                 </div>
             </div>
+            <div class="tip">
+                <div class="tii">⚡</div>
+                <div class="tit"><strong>Pomodoro Technique:</strong> Work for 25 minutes → take a 5-minute break. After
+                    4 sessions, take a longer 15–30 minute break. Scientifically proven to boost focus and reduce
+                    burnout!</div>
+            </div>
+            <div class="nr"><button class="bp" onclick="go(2)">← Habits</button><button class="bn" onclick="go(4)">Stats
+                    & XP →</button></div>
         </div>
 
-        <div class="tip-box">
-            <div class="tip-icon">⚡</div>
-            <div class="tip-text"><strong>Pomodoro Technique:</strong> Work for 25 min, take a 5 min break. After 4
-                sessions, take a longer 15-30 min break. It's a scientifically proven productivity method!</div>
-        </div>
-    </div>
-
-    <div class="nav-btns">
-        <button class="btn-prev" onclick="goTo(2)">← Habits</button>
-        <button class="btn-next" onclick="goTo(4)">Stats & XP →</button>
-    </div>
-    </div>
-
-    <!-- SECTION 5: STATS + XP -->
-    <div class="section" id="sec-4">
-        <div class="sec-header">
-            <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📊</div>
-            <div>
-                <div class="sec-num">05 / 06</div>
-                <div class="sec-title">Stats & XP System</div>
-            </div>
-        </div>
-
-        <div class="xp-display">
-            <div style="font-size:14px;font-weight:700;margin-bottom:4px">🎮 How the XP System Works</div>
-            <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Gamify your productivity — level up as you
-                go!</div>
-            <div class="xp-grid">
-                <div class="xp-item">
-                    <div class="xp-val">+10</div>
-                    <div class="xp-lbl">Task Complete</div>
-                </div>
-                <div class="xp-item">
-                    <div class="xp-val">+50</div>
-                    <div class="xp-lbl">Pomodoro Done</div>
-                </div>
-                <div class="xp-item">
-                    <div class="xp-val">+25</div>
-                    <div class="xp-lbl">Study Session</div>
-                </div>
-                <div class="xp-item">
-                    <div class="xp-val">🔥</div>
-                    <div class="xp-lbl">Daily Streak</div>
+        <!-- SEC 4: STATS -->
+        <div class="sec" id="s4">
+            <div class="sh">
+                <div class="si" style="background:rgba(0,255,136,.1)">📊</div>
+                <div>
+                    <div class="sn">05 / 06</div>
+                    <div class="st">Stats & XP System</div>
                 </div>
             </div>
-        </div>
-
-        <div class="shortcuts">
-            <div class="shortcut-row">
-                <div class="shortcut-icon">☀️</div>
-                <div class="shortcut-action">View today's tasks</div>
-                <div class="shortcut-key">Sidebar → Today</div>
-            </div>
-            <div class="shortcut-row">
-                <div class="shortcut-icon">📊</div>
-                <div class="shortcut-action">See detailed analytics</div>
-                <div class="shortcut-key">Sidebar → Stats</div>
-            </div>
-            <div class="shortcut-row">
-                <div class="shortcut-icon">🏆</div>
-                <div class="shortcut-action">Check your Level & XP</div>
-                <div class="shortcut-key">Header → XP Bar</div>
-            </div>
-            <div class="shortcut-row">
-                <div class="shortcut-icon">⚙️</div>
-                <div class="shortcut-action">Profile & Settings</div>
-                <div class="shortcut-key">Header → Avatar</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="nav-btns">
-        <button class="btn-prev" onclick="goTo(3)">← Pomodoro</button>
-        <button class="btn-next" onclick="goTo(5)">Pro Tips →</button>
-    </div>
-    </div>
-
-    <!-- SECTION 6: COMPLETE -->
-    <div class="section" id="sec-5">
-        <div class="sec-header">
-            <div class="sec-icon" style="background:rgba(0,255,136,0.1)">🚀</div>
-            <div>
-                <div class="sec-num">06 / 06</div>
-                <div class="sec-title">Pro Tips & Launch!</div>
-            </div>
-        </div>
-
-        <div class="cards" style="margin-bottom:24px">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">📱</div>
-                    <div class="card-title">Install App (PWA)</div>
-                    <span class="card-badge badge-green">Mobile</span>
+            <div class="xpbox">
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px">🎮 How Do You Earn XP?</div>
+                <div style="font-size:13px;color:var(--muted)">TaskMaster Pro gamifies your productivity — complete
+                    actions to earn XP and level up!</div>
+                <div class="xpg">
+                    <div class="xpi">
+                        <div class="xpv">+10</div>
+                        <div class="xpl">Task Completed</div>
+                    </div>
+                    <div class="xpi">
+                        <div class="xpv">+50</div>
+                        <div class="xpl">Pomodoro Done</div>
+                    </div>
+                    <div class="xpi">
+                        <div class="xpv">+25</div>
+                        <div class="xpl">Study Session</div>
+                    </div>
+                    <div class="xpi">
+                        <div class="xpv">🔥</div>
+                        <div class="xpl">Daily Streak</div>
+                    </div>
                 </div>
-                <div class="card-desc">Open the site in Chrome → tap the 3 dots menu → <strong>"Add to Home
-                        Screen"</strong> → Use it like a native app! It even works offline!</div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">💻</div>
-                    <div class="card-title">Desktop App Install</div>
-                    <span class="card-badge badge-cyan">Desktop</span>
+            <div class="shorts">
+                <div class="sr">
+                    <div class="sri">☀️</div>
+                    <div class="sra">View today's tasks</div>
+                    <div class="srk">Sidebar → Today</div>
                 </div>
-                <div class="card-desc">Click the <strong>install icon</strong> in your Chrome address bar → The app will
-                    be available right on your desktop!</div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">🎯</div>
-                    <div class="card-title">Best Practice</div>
-                    <span class="card-badge badge-orange">Tip</span>
+                <div class="sr">
+                    <div class="sri">📊</div>
+                    <div class="sra">View detailed analytics</div>
+                    <div class="srk">Sidebar → Stats</div>
                 </div>
-                <div class="card-desc">Every morning, check the <strong>Today view</strong>, prioritize tasks, start a
-                    Pomodoro, and log your study sessions at night!</div>
+                <div class="sr">
+                    <div class="sri">🏆</div>
+                    <div class="sra">Check Level & XP</div>
+                    <div class="srk">Header → XP Bar</div>
+                </div>
+                <div class="sr">
+                    <div class="sri">⚙️</div>
+                    <div class="sra">Profile & Settings</div>
+                    <div class="srk">Header → Avatar Icon</div>
+                </div>
             </div>
+            <div class="tip">
+                <div class="tii">📈</div>
+                <div class="tit"><strong>Weekly Review:</strong> Check your Stats every week — identify which categories
+                    took the most time and where you can improve.</div>
+            </div>
+            <div class="nr"><button class="bp" onclick="go(3)">← Pomodoro</button><button class="bn" onclick="go(5)">Pro
+                    Tips →</button></div>
         </div>
 
-        <div class="complete-screen">
-            <span class="complete-emoji">🎉</span>
-            <div class="complete-title glow-green">You're All Set!</div>
-            <div class="complete-sub">Guide complete! Now open TaskMaster Pro and start your productivity journey. Add
-                your first task and start earning XP!</div>
-            <a href="https://task-master.in" class="launch-btn" target="_blank">
-                ⚡ Launch TaskMaster Pro
-            </a>
+        <!-- SEC 5: PRO TIPS -->
+        <div class="sec" id="s5">
+            <div class="sh">
+                <div class="si" style="background:rgba(0,255,136,.1)">🚀</div>
+                <div>
+                    <div class="sn">06 / 06</div>
+                    <div class="st">Pro Tips & Launch!</div>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">📱</div>
+                        <div class="ct">Install as Mobile App</div><span class="bdg bg">PWA</span>
+                    </div>
+                    <div class="cd">Open <strong>task-master.in</strong> in Chrome → tap the 3-dot menu → select
+                        <strong>"Add to Home Screen"</strong> → use it just like a native app! Works offline too.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">💻</div>
+                        <div class="ct">Install as Desktop App</div><span class="bdg bc">Desktop</span>
+                    </div>
+                    <div class="cd">Open Chrome and look for the <strong>install icon</strong> in the address bar on the
+                        right side → click it → the app opens in its own window on your desktop.</div>
+                </div>
+                <div class="card">
+                    <div class="ch">
+                        <div class="ci">🎯</div>
+                        <div class="ct">Best Daily Routine</div><span class="bdg bo">Tip</span>
+                    </div>
+                    <div class="cd">
+                        <strong>Morning:</strong> Check Today view and prioritize tasks<br>
+                        <strong>During the day:</strong> Use Pomodoro to stay focused<br>
+                        <strong>Study time:</strong> Launch Study Mode with a session note<br>
+                        <strong>Evening:</strong> Mark habits done and review your Stats
+                    </div>
+                </div>
+            </div>
+            <div class="comp">
+                <span class="cemo">🎉</span>
+                <div class="cttl">You're All Set!</div>
+                <div class="csub">You've completed the guide! Head over to TaskMaster Pro, add your first task, and
+                    start earning XP. Your productivity journey starts now!</div>
+                <a href="https://task-master.in" class="launch" target="_blank">⚡ Launch TaskMaster Pro</a>
+            </div>
+            <div class="nr"><button class="bp" onclick="go(4)">← Stats</button><button class="bn"
+                    onclick="window.open('https://task-master.in','_blank')">🚀 Launch App</button></div>
         </div>
-    </div>
-
-    <div class="nav-btns">
-        <button class="btn-prev" onclick="goTo(4)">← Stats</button>
-        <button class="btn-next" onclick="window.open('https://task-master.in','_blank')">🚀 Launch App</button>
-    </div>
-    </div>
 
     </div>
 
     <script>
-        let current = -1;
-        const total = 6;
-
-        // Particles
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const colors = ['#00ff88', '#00eeff', '#ff9900'];
-            for (let i = 0; i < 20; i++) {
-                const p = document.createElement('div');
-                p.className = 'particle';
-                const size = Math.random() * 4 + 2;
-                p.style.cssText = `
-      width:${size}px; height:${size}px;
-      background:${colors[Math.floor(Math.random() * colors.length)]};
-      left:${Math.random() * 100}%;
-      animation-duration:${Math.random() * 15 + 10}s;
-      animation-delay:${Math.random() * 10}s;
-    `;
-                container.appendChild(p);
-            }
-        }
-
+        var cur = -1;
         function startGuide() {
             document.getElementById('hero').style.display = 'none';
-            document.getElementById('nav-dots').style.display = 'flex';
-            document.getElementById('sections').style.display = 'block';
-            goTo(0);
+            document.getElementById('dots').style.display = 'flex';
+            document.getElementById('wrap').style.display = 'flex';
+            document.getElementById('pt').style.display = 'inline';
+            go(0);
         }
-
-        function goTo(index) {
-            // Hide all
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-
-            // Show target
-            document.getElementById('sec-' + index).classList.add('active');
-            document.querySelectorAll('.dot')[index].classList.add('active');
-
-            // Update progress
-            const pct = ((index + 1) / total) * 100;
-            document.getElementById('progress-fill').style.width = pct + '%';
-            document.getElementById('progress-text').textContent = (index + 1) + ' / ' + total;
-
-            current = index;
+        function go(n) {
+            if (cur >= 0) {
+                document.getElementById('s' + cur).classList.remove('on');
+                document.querySelectorAll('.dot')[cur].classList.remove('on');
+            }
+            document.getElementById('s' + n).classList.add('on');
+            document.querySelectorAll('.dot')[n].classList.add('on');
+            document.getElementById('pf').style.width = ((n + 1) / 6 * 100) + '%';
+            document.getElementById('pt').textContent = (n + 1) + ' / 6';
+            cur = n;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        createParticles();
     </script>
 </body>
 
