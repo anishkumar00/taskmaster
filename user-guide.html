@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>TaskMaster Pro — User Guide</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --border: #21262d;
+            --green: #00ff88;
+            --cyan: #00eeff;
+            --orange: #ff9900;
+            --red: #ff4444;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --dim: #484f58;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── PARTICLES BG ── */
+        #particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* ── HEADER ── */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--green);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--text);
+        }
+
+        .progress-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .progress-bar {
+            width: 140px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green), var(--cyan));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 80px 24px 60px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 12px;
+            color: var(--green);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 20px;
+            animation: fadeDown 0.6s ease both;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 16px;
+            animation: fadeDown 0.6s 0.1s ease both;
+        }
+
+        .hero h1 .accent {
+            color: var(--green);
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            animation: fadeDown 0.6s 0.2s ease both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green), #00cc6a);
+            color: #0d1117;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            animation: fadeDown 0.6s 0.3s ease both;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        /* ── NAV DOTS ── */
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .dot.active {
+            background: var(--green);
+            width: 24px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        /* ── SECTIONS ── */
+        .sections {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── SECTION HEADER ── */
+        .sec-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sec-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .sec-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--dim);
+            margin-bottom: 4px;
+        }
+
+        .sec-title {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        /* ── CARDS ── */
+        .cards {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 255, 136, 0.03));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 255, 136, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card-icon {
+            font-size: 22px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .card-badge {
+            margin-left: auto;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .badge-green {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--green);
+        }
+
+        .badge-cyan {
+            background: rgba(0, 238, 255, 0.1);
+            color: var(--cyan);
+        }
+
+        .badge-orange {
+            background: rgba(255, 153, 0, 0.1);
+            color: var(--orange);
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ── STEPS ── */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 24px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            position: relative;
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 44px;
+            bottom: -8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--green), transparent);
+            opacity: 0.3;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-body {
+            padding-bottom: 24px;
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ── TIP BOX ── */
+        .tip-box {
+            background: rgba(0, 255, 136, 0.06);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .tip-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .tip-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .tip-text strong {
+            color: var(--green);
+        }
+
+        /* ── CODE TAG ── */
+        .code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 2px 8px;
+            color: var(--cyan);
+        }
+
+        /* ── SHORTCUT TABLE ── */
+        .shortcuts {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .shortcut-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        .shortcut-row:last-child {
+            border-bottom: none;
+        }
+
+        .shortcut-row:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .shortcut-icon {
+            font-size: 18px;
+            width: 28px;
+            text-align: center;
+        }
+
+        .shortcut-action {
+            flex: 1;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .shortcut-key {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--green);
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        /* ── XP DISPLAY ── */
+        .xp-display {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .xp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .xp-item {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 14px 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .xp-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 4px;
+        }
+
+        .xp-lbl {
+            font-size: 11px;
+            color: var(--dim);
+        }
+
+        /* ── NAV BUTTONS ── */
+        .nav-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-prev,
+        .btn-next {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-prev {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .btn-prev:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--green), #00cc6a);
+            color: var(--bg);
+            margin-left: auto;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-prev:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* ── COMPLETE SCREEN ── */
+        .complete-screen {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .complete-emoji {
+            font-size: 72px;
+            display: block;
+            margin-bottom: 16px;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .complete-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 12px;
+        }
+
+        .complete-sub {
+            font-size: 15px;
+            color: var(--muted);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .launch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--green), var(--cyan));
+            color: var(--bg);
+            font-weight: 800;
+            font-size: 15px;
+            padding: 16px 32px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 16px 40px;
+            }
+
+            .sections {
+                padding: 0 16px 60px;
+            }
+
+            .sec-title {
+                font-size: 22px;
+            }
+
+            .progress-bar {
+                width: 80px;
+            }
+        }
+
+        /* ── GLOW EFFECTS ── */
+        .glow-green {
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+
+        .glow-cyan {
+            text-shadow: 0 0 20px rgba(0, 238, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="particles"></div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">⚡ Task<span>Master</span> Pro</div>
+        <div class="progress-wrap">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+            </div>
+            <span id="progress-text">0 / 6</span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero" id="hero">
+        <div class="hero-badge">📖 Interactive User Guide</div>
+        <h1>Master Your <span class="accent">Productivity</span></h1>
+        <p>Learn everything about TaskMaster Pro in 6 quick steps. From tasks to streaks — become a power user!</p>
+        <button class="hero-cta" onclick="startGuide()">
+            🚀 Start Guide
+            <span style="font-size:18px">→</span>
+        </button>
+    </div>
+
+    <!-- NAV DOTS -->
+    <div class="nav-dots" id="nav-dots" style="display:none">
+        <button class="dot active" onclick="goTo(0)"></button>
+        <button class="dot" onclick="goTo(1)"></button>
+        <button class="dot" onclick="goTo(2)"></button>
+        <button class="dot" onclick="goTo(3)"></button>
+        <button class="dot" onclick="goTo(4)"></button>
+        <button class="dot" onclick="goTo(5)"></button>
+    </div>
+
+    <!-- SECTIONS -->
+    <div class="sections" id="sections" style="display:none">
+
+        <!-- SECTION 1: TASKS -->
+        <div class="section active" id="sec-0">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📋</div>
+                <div>
+                    <div class="sec-num">01 / 06</div>
+                    <div class="sec-title">Task Management</div>
+                </div>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <div class="step-title">➕ Task Add Karo</div>
+                        <div class="step-desc">Header mein <span class="code">+ Task</span> button click karo. Title,
+                            Category, Priority (High/Medium/Low), Due Date, Notes, Tags aur Subtasks add kar sakte ho!
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <div class="step-title">☀️ Views Switch Karo</div>
+                        <div class="step-desc">Sidebar mein <strong>Today</strong> (aaj ke tasks), <strong>All
+                                Tasks</strong> (saare pending tasks), aur <strong>Completed</strong> (done tasks) views
+                            hain.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <div class="step-title">🔍 Search & Filter</div>
+                        <div class="step-desc">Dashboard pe tasks ko name ya tags se search karo. Priority aur Date se
+                            filter/sort bhi kar sakte ho!</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-icon">💡</div>
+                <div class="tip-text"><strong>Pro Tip:</strong> Ek task mein multiple subtasks add karo — har subtask
+                    complete karne par extra XP milta hai!</div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" disabled>← Back</button>
+                <button class="btn-next" onclick="goTo(1)">Categories → </button>
+            </div>
+        </div>
+
+        <!-- SECTION 2: CATEGORIES -->
+        <div class="section" id="sec-1">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(0,238,255,0.1)">🏷️</div>
+                <div>
+                    <div class="sec-num">02 / 06</div>
+                    <div class="sec-title">Categories</div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <div class="card-title">Categories Manage Karo</div>
+                        <span class="card-badge badge-cyan">Sidebar</span>
+                    </div>
+                    <div class="card-desc">Sidebar mein "CATEGORIES" ke paas ⚙ icon click karo. Nayi category banao,
+                        emoji aur color choose karo!</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎨</div>
+                        <div class="card-title">Custom Colors & Emojis</div>
+                        <span class="card-badge badge-green">Custom</span>
+                    </div>
+                    <div class="card-desc">Har category ke liye unique emoji aur color set karo — apne tasks ko visually
+                        organize karo!</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">Category Stats</div>
+                        <span class="card-badge badge-orange">Stats</span>
+                    </div>
+                    <div class="card-desc">Stats view mein dekho konsi category mein kitne tasks hain aur completion
+                        rate kya hai!</div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-icon">🎯</div>
+                <div class="tip-text"><strong>Suggestion:</strong> Categories banao jaise <strong>Study, Work, Personal,
+                        Health</strong> — isse apna time clearly track kar sakte ho!</div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" onclick="goTo(0)">← Tasks</button>
+                <button class="btn-next" onclick="goTo(2)">Habit Tracker →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: HABITS -->
+        <div class="section" id="sec-2">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(255,153,0,0.1)">🔄</div>
+                <div>
+                    <div class="sec-num">03 / 06</div>
+                    <div class="sec-title">Habit Tracker</div>
+                </div>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <div class="step-title">🔄 Habit Tracker Open Karo</div>
+                        <div class="step-desc">Sidebar mein <span class="code">Habit Tracker</span> click karo.</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <div class="step-title">➕ Daily Habit Add Karo</div>
+                        <div class="step-desc">Wo habits add karo jo roz karni hain — jaise <em>Exercise, Reading,
+                                Meditation</em>. Har din complete mark karo!</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <div class="step-title">🔥 Streak Banao</div>
+                        <div class="step-desc">Roz habits complete karo aur apni streak badhao! Lambi streak = zyada XP
+                            aur motivation!</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-icon">🔥</div>
+                <div class="tip-text"><strong>Challenge:</strong> 7 din ki streak banao aur dekho kitna powerful feel
+                    hota hai! Chhoti habits se shuru karo — ek din mein 2-3 habits kaafi hain!</div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" onclick="goTo(1)">← Categories</button>
+                <button class="btn-next" onclick="goTo(3)">Pomodoro →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 4: POMODORO + STUDY -->
+        <div class="section" id="sec-3">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(0,238,255,0.1)">⏱</div>
+                <div>
+                    <div class="sec-num">04 / 06</div>
+                    <div class="sec-title">Pomodoro & Study Mode</div>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-bottom:20px">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⏱</div>
+                        <div class="card-title">Pomodoro Timer</div>
+                        <span class="card-badge badge-cyan">Sidebar</span>
+                    </div>
+                    <div class="card-desc">
+                        Sidebar mein <strong>POMODORO</strong> section hai.<br><br>
+                        • <span class="code">▶ Start</span> — Focus session shuru karo (25 min)<br>
+                        • <span class="code">↺</span> — Reset karo<br>
+                        • <span class="code">edit</span> — Focus/Break time customize karo<br><br>
+                        Har session complete karne par <strong style="color:var(--green)">+50 XP</strong> milta hai!
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📚</div>
+                        <div class="card-title">Study Mode</div>
+                        <span class="card-badge badge-green">Header</span>
+                    </div>
+                    <div class="card-desc">
+                        Header mein <span class="code">📚 Study</span> button click karo.<br><br>
+                        • Fullscreen distraction-free timer<br>
+                        • Session note add karo (e.g. "Math Ch.3")<br>
+                        • <span class="code">💾 Save Session</span> — Time log karo<br>
+                        • <span class="code">✕ Discard</span> — Cancel karo
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <div class="tip-icon">⚡</div>
+                <div class="tip-text"><strong>Pomodoro Technique:</strong> 25 min kaam karo, 5 min break lo. 4 sessions
+                    ke baad 15-30 min ka lamba break lo. Yeh scientifically proven productivity technique hai!</div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" onclick="goTo(2)">← Habits</button>
+                <button class="btn-next" onclick="goTo(4)">Stats & XP →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 5: STATS + XP -->
+        <div class="section" id="sec-4">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">📊</div>
+                <div>
+                    <div class="sec-num">05 / 06</div>
+                    <div class="sec-title">Stats & XP System</div>
+                </div>
+            </div>
+
+            <div class="xp-display">
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px">🎮 XP Kaise Milta Hai?</div>
+                <div style="font-size:13px;color:var(--muted);margin-bottom:16px">Productivity gamify karo — level up
+                    karo!</div>
+                <div class="xp-grid">
+                    <div class="xp-item">
+                        <div class="xp-val">+10</div>
+                        <div class="xp-lbl">Task Complete</div>
+                    </div>
+                    <div class="xp-item">
+                        <div class="xp-val">+50</div>
+                        <div class="xp-lbl">Pomodoro Done</div>
+                    </div>
+                    <div class="xp-item">
+                        <div class="xp-val">+25</div>
+                        <div class="xp-lbl">Study Session</div>
+                    </div>
+                    <div class="xp-item">
+                        <div class="xp-val">🔥</div>
+                        <div class="xp-lbl">Daily Streak</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shortcuts">
+                <div class="shortcut-row">
+                    <div class="shortcut-icon">☀️</div>
+                    <div class="shortcut-action">Aaj ke tasks dekho</div>
+                    <div class="shortcut-key">Sidebar → Today</div>
+                </div>
+                <div class="shortcut-row">
+                    <div class="shortcut-icon">📊</div>
+                    <div class="shortcut-action">Detailed analytics</div>
+                    <div class="shortcut-key">Sidebar → Stats</div>
+                </div>
+                <div class="shortcut-row">
+                    <div class="shortcut-icon">🏆</div>
+                    <div class="shortcut-action">Level & XP check karo</div>
+                    <div class="shortcut-key">Header → XP Bar</div>
+                </div>
+                <div class="shortcut-row">
+                    <div class="shortcut-icon">⚙️</div>
+                    <div class="shortcut-action">Profile & Settings</div>
+                    <div class="shortcut-key">Header → Avatar</div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" onclick="goTo(3)">← Pomodoro</button>
+                <button class="btn-next" onclick="goTo(5)">Pro Tips →</button>
+            </div>
+        </div>
+
+        <!-- SECTION 6: COMPLETE -->
+        <div class="section" id="sec-5">
+            <div class="sec-header">
+                <div class="sec-icon" style="background:rgba(0,255,136,0.1)">🚀</div>
+                <div>
+                    <div class="sec-num">06 / 06</div>
+                    <div class="sec-title">Pro Tips & Launch!</div>
+                </div>
+            </div>
+
+            <div class="cards" style="margin-bottom:24px">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📱</div>
+                        <div class="card-title">App Install Karo (PWA)</div>
+                        <span class="card-badge badge-green">Mobile</span>
+                    </div>
+                    <div class="card-desc">Chrome mein site kholo → 3 dots menu → <strong>"Add to Home Screen"</strong>
+                        → App ki tarah use karo! Offline bhi kaam karta hai!</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">💻</div>
+                        <div class="card-title">Desktop App Install Karo</div>
+                        <span class="card-badge badge-cyan">Desktop</span>
+                    </div>
+                    <div class="card-desc">Chrome address bar mein <strong>install icon</strong> click karo → Desktop pe
+                        app aa jaayega!</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎯</div>
+                        <div class="card-title">Best Practice</div>
+                        <span class="card-badge badge-orange">Tip</span>
+                    </div>
+                    <div class="card-desc">Har subah <strong>Today view</strong> check karo, tasks prioritize karo,
+                        Pomodoro se kaam shuru karo — aur raat ko study session log karo!</div>
+                </div>
+            </div>
+
+            <div class="complete-screen">
+                <span class="complete-emoji">🎉</span>
+                <div class="complete-title glow-green">Aap Ready Ho!</div>
+                <div class="complete-sub">Guide complete ki! Ab TaskMaster Pro pe jaao aur apni productivity journey
+                    shuru karo. Pehla task add karo aur XP kamana shuru karo!</div>
+                <a href="https://task-master.in" class="launch-btn" target="_blank">
+                    ⚡ TaskMaster Pro Launch Karo
+                </a>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-prev" onclick="goTo(4)">← Stats</button>
+                <button class="btn-next" onclick="window.open('https://task-master.in','_blank')">🚀 Launch App</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let current = -1;
+        const total = 6;
+
+        // Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00ff88', '#00eeff', '#ff9900'];
+            for (let i = 0; i < 20; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${colors[Math.floor(Math.random() * colors.length)]};
+      left:${Math.random() * 100}%;
+      animation-duration:${Math.random() * 15 + 10}s;
+      animation-delay:${Math.random() * 10}s;
+    `;
+                container.appendChild(p);
+            }
+        }
+
+        function startGuide() {
+            document.getElementById('hero').style.display = 'none';
+            document.getElementById('nav-dots').style.display = 'flex';
+            document.getElementById('sections').style.display = 'block';
+            goTo(0);
+        }
+
+        function goTo(index) {
+            // Hide all
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+
+            // Show target
+            document.getElementById('sec-' + index).classList.add('active');
+            document.querySelectorAll('.dot')[index].classList.add('active');
+
+            // Update progress
+            const pct = ((index + 1) / total) * 100;
+            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-text').textContent = (index + 1) + ' / ' + total;
+
+            current = index;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        createParticles();
+    </script>
+</body>
+
+</html>
