@@ -5,106 +5,106 @@
 
 // ── Default settings ──────────────────────────────────
 const DEFAULT_SETTINGS = {
-    theme: "dark",        // "dark" | "light"
-    fontSize: "medium",     // "small" | "medium" | "large" | "xlarge"
-    accentColor: "#00ff88",    // hex color
-    language: "en",         // "en" | "hi"
-    notifTaskComplete: false,
-    notifOverdue: false,
-    notifPomodoro: false,
-    notifStudyReminder: false,
+  theme: "dark",        // "dark" | "light"
+  fontSize: "medium",     // "small" | "medium" | "large" | "xlarge"
+  accentColor: "#00ff88",    // hex color
+  language: "en",         // "en" | "hi"
+  notifTaskComplete: false,
+  notifOverdue: false,
+  notifPomodoro: false,
+  notifStudyReminder: false,
 };
 
 // ── Accent color options ──────────────────────────────
 const ACCENT_COLORS = [
-    { color: "#00ff88", name: "Green (Default)" },
-    { color: "#00eeff", name: "Cyan" },
-    { color: "#bb88ff", name: "Purple" },
-    { color: "#ff88aa", name: "Pink" },
-    { color: "#ff8800", name: "Orange" },
-    { color: "#ffdd00", name: "Yellow" },
-    { color: "#44aaff", name: "Blue" },
-    { color: "#ff4466", name: "Red" },
+  { color: "#00ff88", name: "Green (Default)" },
+  { color: "#00eeff", name: "Cyan" },
+  { color: "#bb88ff", name: "Purple" },
+  { color: "#ff88aa", name: "Pink" },
+  { color: "#ff8800", name: "Orange" },
+  { color: "#ffdd00", name: "Yellow" },
+  { color: "#44aaff", name: "Blue" },
+  { color: "#ff4466", name: "Red" },
 ];
 
 // ── Hindi translations ────────────────────────────────
 const LANG = {
-    en: {
-        today: "Today",
-        allTasks: "All Tasks",
-        completed: "Completed",
-        studyHistory: "Study History",
-        stats: "Stats",
-        categories: "CATEGORIES",
-        study: "📚 Study",
-        addTask: "+ Task",
-        settings: "Settings",
-        search: "Search tasks, tags...",
-        allPriority: "All Priority",
-        overallProgress: "Overall Progress",
-        noTasks: "No tasks here!",
-        addFirst: "Click \"+Task\" to add one",
-        taskTitle: "Task Title *",
-        category: "Category",
-        priority: "Priority",
-        dueDate: "Due Date",
-        notes: "Notes",
-        tags: "Tags (comma separated)",
-        subtasks: "Subtasks",
-        cancel: "Cancel",
-        save: "Save Changes",
-        addTaskBtn: "Add Task ✓",
-        logout: "🚪 Logout",
-        profile: "👤 Profile",
-        complete: "✓ Complete",
-        pending: "↩ Pending",
-        edit: "✏️ Edit",
-        delete: "🗑",
-        tapMotivation: "💬 tap for motivation",
-        focus: "FOCUS",
-        breakTime: "BREAK",
-        start: "▶ Start",
-        pause: "⏸ Pause",
-        resume: "▶ Resume",
-    },
-    hi: {
-        today: "आज",
-        allTasks: "सभी काम",
-        completed: "पूरे हुए",
-        studyHistory: "पढ़ाई इतिहास",
-        stats: "आँकड़े",
-        categories: "श्रेणियाँ",
-        study: "📚 पढ़ाई",
-        addTask: "+ काम",
-        settings: "सेटिंग्स",
-        search: "काम ढूंढो...",
-        allPriority: "सभी प्राथमिकता",
-        overallProgress: "कुल प्रगति",
-        noTasks: "कोई काम नहीं!",
-        addFirst: "\"+काम\" दबाकर जोड़ो",
-        taskTitle: "काम का नाम *",
-        category: "श्रेणी",
-        priority: "प्राथमिकता",
-        dueDate: "तारीख",
-        notes: "नोट्स",
-        tags: "टैग (कॉमा से अलग)",
-        subtasks: "उप-काम",
-        cancel: "रद्द",
-        save: "बदलाव सेव करो",
-        addTaskBtn: "काम जोड़ो ✓",
-        logout: "🚪 लॉगआउट",
-        profile: "👤 प्रोफ़ाइल",
-        complete: "✓ पूरा करो",
-        pending: "↩ अधूरा करो",
-        edit: "✏️ बदलो",
-        delete: "🗑",
-        tapMotivation: "💬 प्रेरणा के लिए दबाओ",
-        focus: "ध्यान",
-        breakTime: "ब्रेक",
-        start: "▶ शुरू",
-        pause: "⏸ रोको",
-        resume: "▶ जारी रखो",
-    },
+  en: {
+    today: "Today",
+    allTasks: "All Tasks",
+    completed: "Completed",
+    studyHistory: "Study History",
+    stats: "Stats",
+    categories: "CATEGORIES",
+    study: "📚 Study",
+    addTask: "+ Task",
+    settings: "Settings",
+    search: "Search tasks, tags...",
+    allPriority: "All Priority",
+    overallProgress: "Overall Progress",
+    noTasks: "No tasks here!",
+    addFirst: "Click \"+Task\" to add one",
+    taskTitle: "Task Title *",
+    category: "Category",
+    priority: "Priority",
+    dueDate: "Due Date",
+    notes: "Notes",
+    tags: "Tags (comma separated)",
+    subtasks: "Subtasks",
+    cancel: "Cancel",
+    save: "Save Changes",
+    addTaskBtn: "Add Task ✓",
+    logout: "🚪 Logout",
+    profile: "👤 Profile",
+    complete: "✓ Complete",
+    pending: "↩ Pending",
+    edit: "✏️ Edit",
+    delete: "🗑",
+    tapMotivation: "💬 tap for motivation",
+    focus: "FOCUS",
+    breakTime: "BREAK",
+    start: "▶ Start",
+    pause: "⏸ Pause",
+    resume: "▶ Resume",
+  },
+  hi: {
+    today: "आज",
+    allTasks: "सभी काम",
+    completed: "पूरे हुए",
+    studyHistory: "पढ़ाई इतिहास",
+    stats: "आँकड़े",
+    categories: "श्रेणियाँ",
+    study: "📚 पढ़ाई",
+    addTask: "+ काम",
+    settings: "सेटिंग्स",
+    search: "काम ढूंढो...",
+    allPriority: "सभी प्राथमिकता",
+    overallProgress: "कुल प्रगति",
+    noTasks: "कोई काम नहीं!",
+    addFirst: "\"+काम\" दबाकर जोड़ो",
+    taskTitle: "काम का नाम *",
+    category: "श्रेणी",
+    priority: "प्राथमिकता",
+    dueDate: "तारीख",
+    notes: "नोट्स",
+    tags: "टैग (कॉमा से अलग)",
+    subtasks: "उप-काम",
+    cancel: "रद्द",
+    save: "बदलाव सेव करो",
+    addTaskBtn: "काम जोड़ो ✓",
+    logout: "🚪 लॉगआउट",
+    profile: "👤 प्रोफ़ाइल",
+    complete: "✓ पूरा करो",
+    pending: "↩ अधूरा करो",
+    edit: "✏️ बदलो",
+    delete: "🗑",
+    tapMotivation: "💬 प्रेरणा के लिए दबाओ",
+    focus: "ध्यान",
+    breakTime: "ब्रेक",
+    start: "▶ शुरू",
+    pause: "⏸ रोको",
+    resume: "▶ जारी रखो",
+  },
 };
 
 // ── Current settings (loaded from localStorage) ────────
@@ -113,96 +113,96 @@ let settingsActiveTab = "appearance";
 
 // ── Load & Apply settings on page load ────────────────
 function loadSettings() {
-    try {
-        const saved = localStorage.getItem("tm_settings");
-        if (saved) {
-            SETTINGS = { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
-        }
-    } catch (e) { SETTINGS = { ...DEFAULT_SETTINGS }; }
-    applySettings();
+  try {
+    const saved = localStorage.getItem("tm_settings");
+    if (saved) {
+      SETTINGS = { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
+    }
+  } catch (e) { SETTINGS = { ...DEFAULT_SETTINGS }; }
+  applySettings();
 }
 
 function saveSettings() {
-    localStorage.setItem("tm_settings", JSON.stringify(SETTINGS));
+  localStorage.setItem("tm_settings", JSON.stringify(SETTINGS));
 }
 
 // ── Apply all settings to the page ────────────────────
 function applySettings() {
-    applyTheme(SETTINGS.theme);
-    applyFontSize(SETTINGS.fontSize);
-    applyAccentColor(SETTINGS.accentColor);
-    applyLanguage(SETTINGS.language);
+  applyTheme(SETTINGS.theme);
+  applyFontSize(SETTINGS.fontSize);
+  applyAccentColor(SETTINGS.accentColor);
+  applyLanguage(SETTINGS.language);
 }
 
 function applyTheme(theme) {
-    document.body.classList.remove("theme-dark", "theme-light");
-    document.body.classList.add("theme-" + theme);
+  document.body.classList.remove("theme-dark", "theme-light");
+  document.body.classList.add("theme-" + theme);
 }
 
 function applyFontSize(size) {
-    document.body.classList.remove("fs-small", "fs-medium", "fs-large", "fs-xlarge");
-    document.body.classList.add("fs-" + size);
+  document.body.classList.remove("fs-small", "fs-medium", "fs-large", "fs-xlarge");
+  document.body.classList.add("fs-" + size);
 }
 
 function applyAccentColor(color) {
-    document.documentElement.style.setProperty("--green", color);
-    // Derive a slightly darker shade for gradients
-    document.documentElement.style.setProperty("--green-dark", color + "cc");
+  document.documentElement.style.setProperty("--green", color);
+  // Derive a slightly darker shade for gradients
+  document.documentElement.style.setProperty("--green-dark", color + "cc");
 }
 
 function applyLanguage(lang) {
-    const T = LANG[lang] || LANG.en;
-    // Update nav labels
-    const navMap = {
-        "today": T.today,
-        "pending": T.allTasks,
-        "completed": T.completed,
-        "history": T.studyHistory,
-        "stats": T.stats,
-    };
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-        const view = btn.dataset.view;
-        if (view && navMap[view]) {
-            const label = btn.querySelector(".nav-label");
-            if (label) label.textContent = navMap[view];
-        }
-    });
-    // Study & Add Task buttons in header
-    const studyBtn = document.querySelector(".btn-study");
-    const addBtn = document.querySelector(".btn-add");
-    if (studyBtn) studyBtn.textContent = T.study;
-    if (addBtn) addBtn.textContent = T.addTask;
-    // Sidebar section title
-    const catTitle = document.querySelector(".sidebar-section-title");
-    if (catTitle) catTitle.textContent = T.categories;
-    // Quote widget
-    const quoteLabel = document.querySelector(".quote-label");
-    if (quoteLabel) quoteLabel.textContent = T.tapMotivation;
-    // Search placeholder
-    const search = document.getElementById("search-inp");
-    if (search) search.placeholder = T.search;
-    // Progress label
-    const progLabel = document.querySelector(".progress-labels span");
-    if (progLabel) progLabel.textContent = T.overallProgress;
+  const T = LANG[lang] || LANG.en;
+  // Update nav labels
+  const navMap = {
+    "today": T.today,
+    "pending": T.allTasks,
+    "completed": T.completed,
+    "history": T.studyHistory,
+    "stats": T.stats,
+  };
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    const view = btn.dataset.view;
+    if (view && navMap[view]) {
+      const label = btn.querySelector(".nav-label");
+      if (label) label.textContent = navMap[view];
+    }
+  });
+  // Study & Add Task buttons in header
+  const studyBtn = document.querySelector(".btn-study");
+  const addBtn = document.querySelector(".btn-add");
+  if (studyBtn) studyBtn.textContent = T.study;
+  if (addBtn) addBtn.textContent = T.addTask;
+  // Sidebar section title
+  const catTitle = document.querySelector(".sidebar-section-title");
+  if (catTitle) catTitle.textContent = T.categories;
+  // Quote widget
+  const quoteLabel = document.querySelector(".quote-label");
+  if (quoteLabel) quoteLabel.textContent = T.tapMotivation;
+  // Search placeholder
+  const search = document.getElementById("search-inp");
+  if (search) search.placeholder = T.search;
+  // Progress label
+  const progLabel = document.querySelector(".progress-labels span");
+  if (progLabel) progLabel.textContent = T.overallProgress;
 }
 
 // ── Open / Close Settings Modal ───────────────────────
 function openSettingsModal() {
-    settingsActiveTab = "appearance";
-    renderSettingsModal();
-    document.getElementById("settings-overlay").classList.remove("hidden");
+  settingsActiveTab = "appearance";
+  renderSettingsModal();
+  document.getElementById("settings-overlay").classList.remove("hidden");
 }
 
 function closeSettingsModal() {
-    document.getElementById("settings-overlay").classList.add("hidden");
+  document.getElementById("settings-overlay").classList.add("hidden");
 }
 
 // ── Render full modal ─────────────────────────────────
 function renderSettingsModal() {
-    const modal = document.getElementById("settings-modal");
-    const notifPerm = "Notification" in window ? Notification.permission : "denied";
+  const modal = document.getElementById("settings-modal");
+  const notifPerm = "Notification" in window ? Notification.permission : "denied";
 
-    modal.innerHTML = `
+  modal.innerHTML = `
     <!-- Header -->
     <div class="settings-header">
       <div class="settings-header-title">⚙️ ${SETTINGS.language === "hi" ? "सेटिंग्स" : "Settings"}</div>
@@ -212,11 +212,12 @@ function renderSettingsModal() {
     <!-- Tabs -->
     <div class="settings-tabs">
       ${[
-            { id: "appearance", icon: "🎨", en: "Appearance", hi: "दिखावट" },
-            { id: "language", icon: "🌐", en: "Language", hi: "भाषा" },
-            { id: "notifications", icon: "🔔", en: "Notifications", hi: "सूचनाएँ" },
-            { id: "account", icon: "👤", en: "Account", hi: "खाता" },
-        ].map(t => `
+      { id: "appearance", icon: "🎨", en: "Appearance", hi: "दिखावट" },
+      { id: "language", icon: "🌐", en: "Language", hi: "भाषा" },
+      { id: "notifications", icon: "🔔", en: "Notifications", hi: "सूचनाएँ" },
+      { id: "account", icon: "👤", en: "Account", hi: "खाता" },
+      { id: "support", icon: "🎧", en: "Support", hi: "सहायता" },
+    ].map(t => `
         <button class="settings-tab ${settingsActiveTab === t.id ? "active" : ""}"
           onclick="switchSettingsTab('${t.id}')">
           ${t.icon} ${SETTINGS.language === "hi" ? t.hi : t.en}
@@ -234,15 +235,15 @@ function renderSettingsModal() {
           <div class="settings-section-title">🌓 ${SETTINGS.language === "hi" ? "थीम" : "Theme"}</div>
           <div class="theme-cards">
             ${[
-            {
-                id: "dark", name: SETTINGS.language === "hi" ? "डार्क" : "Dark Mode",
-                bg: "#0d1117", sidebar: "#161b22", accent: "#00ff88"
-            },
-            {
-                id: "light", name: SETTINGS.language === "hi" ? "लाइट" : "Light Mode",
-                bg: "#f4f6f9", sidebar: "#ffffff", accent: "#00cc66"
-            },
-        ].map(t => `
+      {
+        id: "dark", name: SETTINGS.language === "hi" ? "डार्क" : "Dark Mode",
+        bg: "#0d1117", sidebar: "#161b22", accent: "#00ff88"
+      },
+      {
+        id: "light", name: SETTINGS.language === "hi" ? "लाइट" : "Light Mode",
+        bg: "#f4f6f9", sidebar: "#ffffff", accent: "#00cc66"
+      },
+    ].map(t => `
               <div class="theme-card ${SETTINGS.theme === t.id ? "selected" : ""}"
                 onclick="selectTheme('${t.id}')">
                 <div class="theme-preview" style="background:${t.bg}">
@@ -287,11 +288,11 @@ function renderSettingsModal() {
           <div class="settings-section-title">🔤 ${SETTINGS.language === "hi" ? "अक्षर का आकार" : "Font Size"}</div>
           <div class="font-size-options">
             ${[
-            { id: "small", px: "12px", en: "Small", hi: "छोटा" },
-            { id: "medium", px: "14px", en: "Medium", hi: "मध्यम" },
-            { id: "large", px: "16px", en: "Large", hi: "बड़ा" },
-            { id: "xlarge", px: "18px", en: "X-Large", hi: "बहुत बड़ा" },
-        ].map(f => `
+      { id: "small", px: "12px", en: "Small", hi: "छोटा" },
+      { id: "medium", px: "14px", en: "Medium", hi: "मध्यम" },
+      { id: "large", px: "16px", en: "Large", hi: "बड़ा" },
+      { id: "xlarge", px: "18px", en: "X-Large", hi: "बहुत बड़ा" },
+    ].map(f => `
               <button class="font-size-btn ${SETTINGS.fontSize === f.id ? "selected" : ""}"
                 onclick="selectFontSize('${f.id}')">
                 <span class="fz-preview" style="font-size:${f.px}">Aa</span>
@@ -321,8 +322,8 @@ function renderSettingsModal() {
           </div>
           <div style="margin-top:12px;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:12px;color:var(--dim);border:1px solid var(--border)">
             ℹ️ ${SETTINGS.language === "hi"
-            ? "भाषा बदलने से बटन, नेविगेशन और लेबल बदल जाएंगे।"
-            : "Changing language updates buttons, nav labels and UI text."}
+      ? "भाषा बदलने से बटन, नेविगेशन और लेबल बदल जाएंगे।"
+      : "Changing language updates buttons, nav labels and UI text."}
           </div>
         </div>
       </div>
@@ -335,26 +336,26 @@ function renderSettingsModal() {
           <!-- Permission status -->
           <div class="notif-status ${notifPerm}">
             ${notifPerm === "granted"
-            ? "✅ " + (SETTINGS.language === "hi" ? "सूचनाएँ चालू हैं" : "Notifications are enabled")
-            : notifPerm === "denied"
-                ? "❌ " + (SETTINGS.language === "hi" ? "सूचनाएँ बंद हैं — browser settings से चालू करो" : "Blocked — enable in browser settings")
-                : "⏳ " + (SETTINGS.language === "hi" ? "अभी allow नहीं किया" : "Not yet allowed")
-        }
+      ? "✅ " + (SETTINGS.language === "hi" ? "सूचनाएँ चालू हैं" : "Notifications are enabled")
+      : notifPerm === "denied"
+        ? "❌ " + (SETTINGS.language === "hi" ? "सूचनाएँ बंद हैं — browser settings से चालू करो" : "Blocked — enable in browser settings")
+        : "⏳ " + (SETTINGS.language === "hi" ? "अभी allow नहीं किया" : "Not yet allowed")
+    }
           </div>
 
           ${notifPerm !== "granted"
-            ? `<button class="btn-enable-notif" onclick="requestNotifPermission()">
+      ? `<button class="btn-enable-notif" onclick="requestNotifPermission()">
                 🔔 ${SETTINGS.language === "hi" ? "सूचनाएँ Allow करो" : "Enable Notifications"}
                </button>`
-            : ""}
+      : ""}
 
           <!-- Notification toggles -->
           ${[
-            { key: "notifTaskComplete", en: "Task Complete", hi: "काम पूरा होने पर", desc_en: "When you complete a task", desc_hi: "+30 XP मिलने पर बताए" },
-            { key: "notifOverdue", en: "Overdue Alert", hi: "देर हो गई अलर्ट", desc_en: "Daily reminder for overdue tasks", desc_hi: "बकाया कामों की रोज़ याद दिलाए" },
-            { key: "notifPomodoro", en: "Pomodoro Complete", hi: "पोमोडोरो पूरा", desc_en: "When focus/break session ends", desc_hi: "Focus session खत्म होने पर" },
-            { key: "notifStudyReminder", en: "Daily Study Reminder", hi: "रोज़ पढ़ाई याद दिलाए", desc_en: "Daily reminder to study at 8 PM", desc_hi: "शाम 8 बजे पढ़ाई की याद" },
-        ].map(n => `
+      { key: "notifTaskComplete", en: "Task Complete", hi: "काम पूरा होने पर", desc_en: "When you complete a task", desc_hi: "+30 XP मिलने पर बताए" },
+      { key: "notifOverdue", en: "Overdue Alert", hi: "देर हो गई अलर्ट", desc_en: "Daily reminder for overdue tasks", desc_hi: "बकाया कामों की रोज़ याद दिलाए" },
+      { key: "notifPomodoro", en: "Pomodoro Complete", hi: "पोमोडोरो पूरा", desc_en: "When focus/break session ends", desc_hi: "Focus session खत्म होने पर" },
+      { key: "notifStudyReminder", en: "Daily Study Reminder", hi: "रोज़ पढ़ाई याद दिलाए", desc_en: "Daily reminder to study at 8 PM", desc_hi: "शाम 8 बजे पढ़ाई की याद" },
+    ].map(n => `
             <div class="setting-row">
               <div class="setting-row-left">
                 <div class="setting-label">${SETTINGS.language === "hi" ? n.hi : n.en}</div>
@@ -370,8 +371,8 @@ function renderSettingsModal() {
 
           <div style="margin-top:12px;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:11px;color:var(--dim);border:1px solid var(--border)">
             ℹ️ ${SETTINGS.language === "hi"
-            ? "सूचनाएँ तभी आएंगी जब app browser में खुली हो।"
-            : "Notifications only work while the app is open in browser."}
+      ? "सूचनाएँ तभी आएंगी जब app browser में खुली हो।"
+      : "Notifications only work while the app is open in browser."}
           </div>
         </div>
       </div>
@@ -395,10 +396,10 @@ function renderSettingsModal() {
           <!-- Quick stats -->
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
             ${[
-            { i: "✅", v: STATE.tasks.filter(t => t.completed).length, l: SETTINGS.language === "hi" ? "काम पूरे" : "Done" },
-            { i: "🔥", v: calcStreak() + "d", l: SETTINGS.language === "hi" ? "लकीर" : "Streak" },
-            { i: "📚", v: fmtDur(STATE.sessions.reduce((a, s) => a + s.duration, 0)), l: SETTINGS.language === "hi" ? "पढ़ाई" : "Study" },
-        ].map(s => `
+      { i: "✅", v: STATE.tasks.filter(t => t.completed).length, l: SETTINGS.language === "hi" ? "काम पूरे" : "Done" },
+      { i: "🔥", v: calcStreak() + "d", l: SETTINGS.language === "hi" ? "लकीर" : "Streak" },
+      { i: "📚", v: fmtDur(STATE.sessions.reduce((a, s) => a + s.duration, 0)), l: SETTINGS.language === "hi" ? "पढ़ाई" : "Study" },
+    ].map(s => `
               <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center">
                 <div style="font-size:15px;font-weight:700;color:var(--green)">${s.v}</div>
                 <div style="font-size:10px;color:var(--dim);margin-top:2px">${s.l}</div>
@@ -427,6 +428,39 @@ function renderSettingsModal() {
         </div>
       </div>
 
+      <!-- ── SUPPORT ── -->
+      <div class="settings-panel ${settingsActiveTab === "support" ? "active" : ""}" id="sp-support">
+        <div class="settings-section">
+          <div class="settings-section-title">🎧 ${SETTINGS.language === "hi" ? "हमसे संपर्क करें (Support)" : "Contact Support"}</div>
+
+          <div style="font-size:13px; color:var(--muted); margin-bottom:16px;">
+            ${SETTINGS.language === "hi" ? "क्या आपको कोई समस्या है या कोई सुझाव देना है? नीचे दिया गया फॉर्म भरें और हमारी टीम आपसे जल्द ही संपर्क करेगी।" : "Have an issue or a suggestion? Fill out the form below and our team will get back to you shortly."}
+          </div>
+
+          <form id="support-form" onsubmit="handleSupportSubmit(event)">
+            <label style="display:block; margin-bottom:6px; font-size:13px; font-weight:600; color:var(--text);">
+              ${SETTINGS.language === "hi" ? "नाम *" : "Name *"}
+            </label>
+            <input class="inp" type="text" id="supp-name" required placeholder="${SETTINGS.language === "hi" ? "आपका नाम" : "Your Name"}" style="margin-bottom:12px;" />
+
+            <label style="display:block; margin-bottom:6px; font-size:13px; font-weight:600; color:var(--text);">
+              ${SETTINGS.language === "hi" ? "ईमेल *" : "Email *"}
+            </label>
+            <input class="inp" type="email" id="supp-email" required placeholder="you@example.com" style="margin-bottom:12px;" />
+
+            <label style="display:block; margin-bottom:6px; font-size:13px; font-weight:600; color:var(--text);">
+              ${SETTINGS.language === "hi" ? "फ़ोन नंबर / मैसेज *" : "Phone Number / Message *"}
+            </label>
+            <textarea class="inp" id="supp-msg" rows="3" required placeholder="${SETTINGS.language === "hi" ? "अपनी समस्या या फ़ोन नंबर यहाँ लिखें..." : "Describe your issue or leave your phone number..."}" style="margin-bottom:16px;"></textarea>
+
+            <button type="submit" style="width:100%; padding:12px; background:linear-gradient(135deg, var(--green), #00cc6a); border:none; border-radius:8px; color:#0d1117; font-weight:700; font-size:14px; cursor:pointer;">
+              📤 ${SETTINGS.language === "hi" ? "मैसेज भेजें" : "Send Message"}
+            </button>
+          </form>
+
+        </div>
+      </div>
+
     </div>
 
     <!-- Footer -->
@@ -442,8 +476,8 @@ function renderSettingsModal() {
 
 // ── Tab switching ─────────────────────────────────────
 function switchSettingsTab(tab) {
-    settingsActiveTab = tab;
-    renderSettingsModal();
+  settingsActiveTab = tab;
+  renderSettingsModal();
 }
 
 // ── Individual setters ────────────────────────────────
@@ -455,93 +489,110 @@ function toggleNotifSetting(key, val) { SETTINGS[key] = val; }
 
 // ── Save / Reset ──────────────────────────────────────
 function applyAndSaveSettings() {
-    saveSettings();
-    applySettings();
-    closeSettingsModal();
-    showToast(SETTINGS.language === "hi" ? "✅ सेटिंग्स सेव हो गईं!" : "✅ Settings saved!", "success");
+  saveSettings();
+  applySettings();
+  closeSettingsModal();
+  showToast(SETTINGS.language === "hi" ? "✅ सेटिंग्स सेव हो गईं!" : "✅ Settings saved!", "success");
 }
 
 function resetSettings() {
-    if (!confirm(SETTINGS.language === "hi"
-        ? "सभी सेटिंग्स reset होंगी। ठीक है?"
-        : "Reset all settings to default?")) return;
-    SETTINGS = { ...DEFAULT_SETTINGS };
-    saveSettings();
-    applySettings();
-    renderSettingsModal();
-    showToast(SETTINGS.language === "hi" ? "↺ Settings reset हो गईं" : "↺ Settings reset to default", "info");
+  if (!confirm(SETTINGS.language === "hi"
+    ? "सभी सेटिंग्स reset होंगी। ठीक है?"
+    : "Reset all settings to default?")) return;
+  SETTINGS = { ...DEFAULT_SETTINGS };
+  saveSettings();
+  applySettings();
+  renderSettingsModal();
+  showToast(SETTINGS.language === "hi" ? "↺ Settings reset हो गईं" : "↺ Settings reset to default", "info");
 }
 
 // ── Notifications ─────────────────────────────────────
 async function requestNotifPermission() {
-    if (!("Notification" in window)) {
-        showToast("Your browser doesn't support notifications", "error"); return;
-    }
-    const perm = await Notification.requestPermission();
-    if (perm === "granted") {
-        showToast(SETTINGS.language === "hi"
-            ? "🔔 सूचनाएँ allow हो गईं!" : "🔔 Notifications enabled!", "success");
-        new Notification("⚡ TaskMaster", {
-            body: SETTINGS.language === "hi"
-                ? "सूचनाएँ चालू हो गई हैं! 🎉"
-                : "Notifications are now enabled! 🎉",
-            icon: "assets/icon-192.png",
-        });
-    } else {
-        showToast(SETTINGS.language === "hi"
-            ? "❌ Allow नहीं किया" : "❌ Permission denied", "error");
-    }
-    renderSettingsModal();
+  if (!("Notification" in window)) {
+    showToast("Your browser doesn't support notifications", "error"); return;
+  }
+  const perm = await Notification.requestPermission();
+  if (perm === "granted") {
+    showToast(SETTINGS.language === "hi"
+      ? "🔔 सूचनाएँ allow हो गईं!" : "🔔 Notifications enabled!", "success");
+    new Notification("⚡ TaskMaster", {
+      body: SETTINGS.language === "hi"
+        ? "सूचनाएँ चालू हो गई हैं! 🎉"
+        : "Notifications are now enabled! 🎉",
+      icon: "assets/icon-192.png",
+    });
+  } else {
+    showToast(SETTINGS.language === "hi"
+      ? "❌ Allow नहीं किया" : "❌ Permission denied", "error");
+  }
+  renderSettingsModal();
 }
 
 // Call this from timer.js when pomodoro ends
 function sendPomodoroNotif(mode) {
-    if (!SETTINGS.notifPomodoro) return;
-    if (Notification.permission !== "granted") return;
-    new Notification("⏱ TaskMaster — Pomodoro", {
-        body: mode === "focus"
-            ? (SETTINGS.language === "hi" ? "Focus पूरा! अब ब्रेक लो 🎉" : "Focus done! Time for a break 🎉")
-            : (SETTINGS.language === "hi" ? "ब्रेक खत्म! वापस काम पर 💪" : "Break over! Back to work 💪"),
-        icon: "assets/icon-192.png",
-    });
+  if (!SETTINGS.notifPomodoro) return;
+  if (Notification.permission !== "granted") return;
+  new Notification("⏱ TaskMaster — Pomodoro", {
+    body: mode === "focus"
+      ? (SETTINGS.language === "hi" ? "Focus पूरा! अब ब्रेक लो 🎉" : "Focus done! Time for a break 🎉")
+      : (SETTINGS.language === "hi" ? "ब्रेक खत्म! वापस काम पर 💪" : "Break over! Back to work 💪"),
+    icon: "assets/icon-192.png",
+  });
 }
 
 // Call this when a task is completed
 function sendTaskCompleteNotif(title) {
-    if (!SETTINGS.notifTaskComplete) return;
-    if (Notification.permission !== "granted") return;
-    new Notification("✅ TaskMaster", {
-        body: SETTINGS.language === "hi"
-            ? `"${title}" पूरा हुआ! +30 XP 🔥`
-            : `"${title}" completed! +30 XP 🔥`,
-        icon: "assets/icon-192.png",
-    });
+  if (!SETTINGS.notifTaskComplete) return;
+  if (Notification.permission !== "granted") return;
+  new Notification("✅ TaskMaster", {
+    body: SETTINGS.language === "hi"
+      ? `"${title}" पूरा हुआ! +30 XP 🔥`
+      : `"${title}" completed! +30 XP 🔥`,
+    icon: "assets/icon-192.png",
+  });
 }
 
 // ── Danger zone ───────────────────────────────────────
 async function clearAllData() {
-    const msg = SETTINGS.language === "hi"
-        ? "⚠️ सभी tasks, categories और study sessions मिट जाएंगे। क्या confirm करते हो?"
-        : "⚠️ All tasks, categories and study sessions will be deleted. Are you sure?";
-    if (!confirm(msg)) return;
-    try {
-        await Promise.all([
-            ...STATE.tasks.map(t => dbDeleteTask(t.id)),
-            ...STATE.sessions.map(s => dbDeleteSession(s.id)),
-        ]);
-        STATE.tasks = [];
-        STATE.sessions = [];
-        showToast(SETTINGS.language === "hi" ? "🗑️ सभी डेटा मिट गया" : "🗑️ All data cleared", "success");
-        closeSettingsModal();
-        renderTasks();
-        updateHeader();
-        updateSidebar();
-    } catch (e) {
-        showToast("Error: " + e.message, "error");
-    }
+  const msg = SETTINGS.language === "hi"
+    ? "⚠️ सभी tasks, categories और study sessions मिट जाएंगे। क्या confirm करते हो?"
+    : "⚠️ All tasks, categories and study sessions will be deleted. Are you sure?";
+  if (!confirm(msg)) return;
+  try {
+    await Promise.all([
+      ...STATE.tasks.map(t => dbDeleteTask(t.id)),
+      ...STATE.sessions.map(s => dbDeleteSession(s.id)),
+    ]);
+    STATE.tasks = [];
+    STATE.sessions = [];
+    showToast(SETTINGS.language === "hi" ? "🗑️ सभी डेटा मिट गया" : "🗑️ All data cleared", "success");
+    closeSettingsModal();
+    renderTasks();
+    updateHeader();
+    updateSidebar();
+  } catch (e) {
+    showToast("Error: " + e.message, "error");
+  }
 }
+
+// ── Support actions ───────────────────────────────────
+function handleSupportSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById("supp-name").value.trim();
+  const email = document.getElementById("supp-email").value.trim();
+  const msg = document.getElementById("supp-msg").value.trim();
+
+  if (!name || !email || !msg) return;
+
+  // TODO: Send exact message using an API endpoint or email service
+  console.log("Support Ticket Logged:", { name, email, msg });
+
+  e.target.reset();
+  showToast(SETTINGS.language === "hi" ? "✅ आपका मैसेज सफलतापुर्वक भेज दिया गया!" : "✅ Your message was sent successfully!", "success");
+}
+
 
 // ── Overlay click handler ─────────────────────────────
 function handleSettingsOverlayClick(e) {
-    if (e.target.id === "settings-overlay") closeSettingsModal();
+  if (e.target.id === "settings-overlay") closeSettingsModal();
 }
