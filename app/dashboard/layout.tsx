@@ -2,6 +2,7 @@ import { DashboardHeader } from "@/components/dashboard/header";
 import { DashboardSidebar } from "@/components/dashboard/sidebar";
 import { MobileOverlay } from "@/components/dashboard/mobile-overlay";
 import { StudyMode } from "@/components/dashboard/study-mode";
+import { LevelUpToast } from "@/components/dashboard/level-up-toast";
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 
@@ -22,6 +23,7 @@ export default async function DashboardLayout({
     <div className="flex xl:h-screen lg:h-screen md:h-screen h-screen w-full flex-col overflow-hidden bg-background font-syne text-foreground text-sm">
       <DashboardHeader />
       <StudyMode />
+      <LevelUpToast />
       <div className="flex flex-1 overflow-hidden relative">
         <DashboardSidebar />
         <MobileOverlay />

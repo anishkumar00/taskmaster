@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 
+import { getLevelFromXP } from "./utils";
+
 // --- Types matching Supabase Schema ---
 export interface Subtask {
   title: string;
@@ -47,6 +49,12 @@ export interface HabitLog {
   status: boolean;
 }
 
+export interface LevelUpDetails {
+  prevLevel: number;
+  newLevel: number;
+  newTitle: string;
+}
+
 // --- Zustand Store ---
 
 interface GlobalState {
@@ -59,6 +67,8 @@ interface GlobalState {
   profile: Profile | null;
   setProfile: (profile: Profile | null) => void;
   addXp: (amount: number) => void;
+  levelUpDetails: LevelUpDetails | null;
+  clearLevelUpToast: () => void;
 
   // Tasks Data
   tasks: Task[];
@@ -105,9 +115,21 @@ export const useStore = create<GlobalState>((set) => ({
   // Profile
   profile: null,
   setProfile: (profile) => set({ profile }),
-  addXp: (amount) => set((state) => ({ 
-    profile: state.profile ? { ...state.profile, xp: state.profile.xp + amount } : null
-  })),
+  levelUpDetails: null,
+  clearLevelUpToast: () => set({ levelUpDetails: null }),
+  addXp: (amount) => set((state) => {
+    if (!state.profile) return { profile: null };
+    const newXp = state.profile.xp + amount;
+    const prevLevelInfo = getLevelFromXP(state.profile.xp);
+    const newLevelInfo = getLevelFromXP(newXp);
+    
+    return { 
+      profile: { ...state.profile, xp: newXp },
+      levelUpDetails: newLevelInfo.level > prevLevelInfo.level 
+        ? { prevLevel: prevLevelInfo.level, newLevel: newLevelInfo.level, newTitle: newLevelInfo.name }
+        : state.levelUpDetails
+    };
+  }),
 
   // Tasks
   tasks: [],
